@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  body {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    transition: all 0.25s ease-out;
+  }
+
+  p {
+    font-weight: 200;
+    line-height: 1.6;
+  }
+}
+
+@theme {
+  --color-primary: #f2f3f5;
+  --color-secondary: hsl(227, 50%, 10%);
+  --color-bgsecondary: #ededfa;
+  --color-tertiary: hsl(292, 80%, 20%);
+  --color-accent: hsl(172, 80%, 20%);
+  --color-quarternary: #dc6c91;
+  --color-gt: oklch(55.4% 0.135 66.442);
+}
+
+.dark {
+  --color-primary: hsl(232, 50%, 10%);
+  --color-bgsecondary: #121838;
+  --color-secondary: hsl(232, 50%, 90%);
+  --color-tertiary: hsl(292, 80%, 80%);
+  --color-accent: hsl(172, 80%, 80%);
+  --color-quarternary: #dc6c91;
+  --color-gt: oklch(85.2% 0.199 91.936);
+}
+
+.shadow-tertiary {
+  box-shadow: 0 4px 15px var(--color-tertiary);
+}
+.hover\:shadow-tertiary:hover {
+  box-shadow: 0 4px 40px var(--color-tertiary);
+}
+.shadow-accent {
+  box-shadow: 0 4px 15px var(--color-accent);
+}
+.hover\:shadow-accent:hover {
+  box-shadow: 0 4px 40px var(--color-accent);
+}
