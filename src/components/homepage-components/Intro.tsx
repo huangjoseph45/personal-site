@@ -20,7 +20,9 @@ const Intro: React.FC = () => {
             onHoverStart={() => setHoveringName(true)}
             onHoverEnd={() => setHoveringName(false)}
           >
-            <h1 className="text-5xl text-quarternary">Joseph Huang</h1>
+            <h1 className="xl:text-5xl lg:text-4xl text-3xl text-quarternary">
+              Joseph Huang
+            </h1>
             {hoveringName ? (
               <motion.hr
                 className="absolute top-3/4 text-quarternary border-1 mt-2"
@@ -59,7 +61,7 @@ const Intro: React.FC = () => {
           </AnimatePresence>
         </Link>
       </AnimationWrapper>
-      <div className="relative mt-6 lg:w-1/2 md:w-2/3 w-full text-2xl gap-4 flex flex-col">
+      <div className="relative mt-6 lg:w-1/2 md:w-2/3 w-full xl:text-2xl lg:text-xl md:text-lg text-base gap-4 flex flex-col">
         <p>
           I'm a computer engineering student at{" "}
           <Link target="_blank" to={"https://ece.gatech.edu/"}>
@@ -153,7 +155,7 @@ const TextAnim: React.FC<{ text: string }> = ({ text }) => {
 
   return (
     <div className="flex flex-row h-fit">
-      <h1 className="mb-8 text-4xl whitespace-nowrap overflow-hidden">
+      <h1 className="xl:mb-8 lg:mb-6 mb-4 xl:text-4xl lg:text-3xl text-2xl whitespace-nowrap overflow-hidden">
         {displayText.join("")}
       </h1>
       <BlinkingCursor />

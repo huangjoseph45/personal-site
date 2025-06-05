@@ -28,7 +28,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
   }, []);
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-col lg:flex-row gap-2">
       <AnimatePresence>
         {!expandCard ? (
           <motion.div
@@ -74,7 +74,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
 
           <Link
             to={cardData?.data.link ?? "#"}
-            className="flex flex-row gap-1"
+            className=" flex-row gap-1 hidden md:flex"
             target="_blank"
           >
             <Button size={0.75} variant="tertiary">
@@ -193,7 +193,7 @@ export default ProjectCard;
 async function fetchMarkdown(fileName: string) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/getMarkdown?file=${fileName}`,
+      `${import.meta.env.VITE_API_URL}/api/getMarkdown?file=${fileName}`,
       {
         method: "GET",
       }

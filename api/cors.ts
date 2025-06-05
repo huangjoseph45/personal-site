@@ -2,7 +2,7 @@ import Cors from "cors";
 
 // Initialize the cors middleware
 const cors = Cors({
-  origin: "http://localhost:5173", // or '*'
+  origin: process.env.CLIENT_ORIGIN, // or '*'
   methods: ["GET", "POST", "OPTIONS"],
 });
 

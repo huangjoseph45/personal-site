@@ -7,6 +7,7 @@ type ButtonProps = {
   variant?: ButtonVariant;
   size?: number;
   children?: React.ReactNode;
+  fill?: boolean;
 };
 type ButtonVariant = "primary" | "secondary" | "tertiary";
 
@@ -17,14 +18,17 @@ const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   size = 1,
   children,
+  fill = false,
 }) => {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`flex items-center justify-center gap-1 relative cursor-pointer font-medium border-2 px-3 p-2 rounded-sm transition-all duration-300 ${
+      className={`${
+        fill ? "w-full" : "w-fit"
+      } flex items-center justify-center gap-1 relative cursor-pointer font-medium border-2 px-3 p-2 rounded-sm transition-all duration-300 ${
         variant == "primary"
-          ? " border-tertiary text-tertiary hover:shadow-tertiary w-fit"
+          ? " border-tertiary text-tertiary hover:shadow-tertiary"
           : variant == "secondary"
           ? "text-accent border-accent hover:shadow-accent "
           : variant == "tertiary"
