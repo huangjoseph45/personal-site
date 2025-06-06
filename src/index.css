@@ -21,7 +21,7 @@
 }
 
 @theme {
-  --color-primary: #f2f3f5;
+  --color-primary: hsl(227, 50%, 90%);
   --color-secondary: hsl(227, 50%, 10%);
   --color-bgsecondary: #ededfa;
   --color-tertiary: hsl(292, 80%, 20%);

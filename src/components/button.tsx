@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 
 type ButtonProps = {
   label?: string;
@@ -21,7 +22,11 @@ const Button: React.FC<ButtonProps> = ({
   fill = false,
 }) => {
   return (
-    <button
+    <motion.button
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      exit={{ scale: 0 }}
+      transition={{ ease: "easeOut", duration: 0.2 }}
       onClick={onClick}
       disabled={disabled}
       className={`${
@@ -39,7 +44,7 @@ const Button: React.FC<ButtonProps> = ({
     >
       {children}
       {label}
-    </button>
+    </motion.button>
   );
 };
 

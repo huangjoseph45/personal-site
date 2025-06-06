@@ -1,6 +1,6 @@
 import React from "react";
 import type { ReactNode } from "react";
-import { AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 
 const Modal: React.FC<{
   setShowModal: (value: boolean) => void;
@@ -12,11 +12,20 @@ const Modal: React.FC<{
     <AnimatePresence>
       {showModal ? (
         <>
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ ease: "easeOut" }}
             className="fixed w-screen h-screen top-0 left-0 backdrop-blur-xs bg-black/15"
             onClick={() => setShowModal(false)}
-          ></div>
-          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[25rem] w-[80vw] p-6 rounded-md bg-bgsecondary">
+          ></motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-[25rem]  p-6 rounded-md bg-bgsecondary"
+          >
             <div className="flex flex-row justify-between items-center h-fit mb-2">
               <h1 className="my-auto">{name}</h1>
               <svg
@@ -41,7 +50,7 @@ const Modal: React.FC<{
               </svg>
             </div>
             {children}
-          </div>
+          </motion.div>
         </>
       ) : (
         ""

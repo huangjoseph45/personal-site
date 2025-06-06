@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "../button";
 import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import ReactMarkdown from "react-markdown";
-import { delay } from "motion";
+import useWindowWidth from "../useWindowWidth";
 
 type CardProps = {
   folder: `${string}`;
@@ -20,34 +20,53 @@ type CardData = {
   content: string;
 };
 
+const cardVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 100, mass: 0.15, damping: 15 },
+  },
+};
+
 const ProjectCard: React.FC<CardProps> = ({ folder }) => {
   const [cardData, setCardData] = useState<CardData | null>(null);
   const [expandCard, setExpandCard] = useState<boolean>(false);
+  const bottomRef = useRef<HTMLButtonElement>(null);
+  const windowWidth = useWindowWidth();
   useEffect(() => {
     fetchMarkdown(`${folder}/content.md`).then((data) => setCardData(data));
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-2">
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className={`origin-top relative flex flex-col lg:flex-row gap-2 ${
+        expandCard ? "" : ""
+      } bg-bgsecondary rounded-md`}
+    >
       <AnimatePresence>
         {!expandCard ? (
           <motion.div
-            className="origin-top-left"
+            className="origin-top-left aspect-video mx-auto my-auto lg:my-0 lg:mx-0"
             initial={{ width: 0, height: 0, opacity: 0 }}
-            animate={{ height: 220, width: 550, opacity: 1 }}
+            animate={{
+              maxHeight: "35vh",
+              height: "auto",
+              width: windowWidth > 1024 ? "auto" : "100%",
+              opacity: 1,
+            }}
             exit={{ width: 0, height: 0, opacity: 0 }}
             transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 10,
-              mass: 0.15,
-              width: {
-                delay: 0.25,
-              },
+              ease: "easeInOut",
+              duration: 0.5,
             }}
           >
             <video
-              className="rounded-md h-full w-full object-cover"
+              className="rounded-md h-full w-full object-cover object-top"
               autoPlay
               loop
               muted
@@ -62,10 +81,10 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
         )}
       </AnimatePresence>
 
-      <motion.div className="rounded-md bg-bgsecondary min-h-55 p-8  w-full">
-        <div className="p-0 flex flex-row items-center justify-between">
+      <motion.div className=" min-h-55 p-8 flex-1 md:min-w-[30rem] min-w-[20rem]">
+        <div className="p-0 flex flex-row items-center justify-between ">
           {cardData?.data ? (
-            <h1 className="2xl:text-4xl xl:text-3xl text-xl font-extrabold">
+            <h1 className="2xl:text-4xl xl:text-3xl text-xl font-extrabold  my-auto">
               {cardData?.data.title}
             </h1>
           ) : (
@@ -134,28 +153,6 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
               <div className="2xl:text-2xl xl:text-xl lg:text-lg text-md mb-6">
                 <ReactMarkdown>{cardData?.content ?? ""}</ReactMarkdown>
               </div>
-              {/* <motion.button
-              className="mt-2 flex flex-row gap-1 text-quarternary cursor-pointer hover:bg-tertiary/15 w-fit transition-all duration-300 rounded-md p-1"
-              onClick={() => setExpandCard(false)}
-            >
-              <p className="">{"Collapse"}</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className={`transition-all duration-500 feather feather-chevron-down ${
-                  expandCard ? "-rotate-180" : ""
-                }`}
-              >
-                <path d="m6 9 6 6 6-6"></path>
-              </svg>
-            </motion.button> */}
             </motion.div>
           ) : (
             ""
@@ -163,7 +160,17 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
         </AnimatePresence>
         <motion.button
           className="mt-2 flex flex-row gap-1 text-quarternary cursor-pointer hover:bg-tertiary/15 w-fit rounded-md p-1"
-          onClick={() => setExpandCard(!expandCard)}
+          ref={bottomRef}
+          onClick={() => {
+            setExpandCard(!expandCard);
+            if (!expandCard)
+              setTimeout(() => {
+                bottomRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "end",
+                });
+              }, 500);
+          }}
         >
           <p className="">{expandCard ? "Collapse" : "Read More"}</p>
           <svg
@@ -184,7 +191,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
           </svg>
         </motion.button>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

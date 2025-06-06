@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const Footer: React.FC<{ contactFunc?: () => void }> = ({ contactFunc }) => {
   return (
-    <div className="text-sm w-full bg-bgsecondary p-4 flex flex-row justify-between items-center">
+    <div className="sm:text-sm text-xs w-full bg-bgsecondary p-4 flex flex-row justify-between items-center">
       {/* Left Group */}
       <div className="w-fit flex flex-row gap-6 ">
         <Link
@@ -13,13 +13,13 @@ const Footer: React.FC<{ contactFunc?: () => void }> = ({ contactFunc }) => {
         >
           Made with ♥
         </Link>
-        <button
-          className="hover:underline cursor-pointer hover:text-accent transition-all duration-300"
-          onClick={contactFunc}
-        >
-          Contact Me!
-        </button>
       </div>
+      <button
+        className="hover:underline cursor-pointer hover:text-accent transition-all duration-300"
+        onClick={contactFunc}
+      >
+        Contact Me!
+      </button>
 
       {/* Right Group */}
       <div className="w-fit">

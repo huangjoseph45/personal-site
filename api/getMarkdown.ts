@@ -14,6 +14,7 @@ export default async function handle(req, res) {
 
     // Expect a query param ?file=somefile.md
     const { file } = req.query;
+    console.log(req.query);
     const fileName = Array.isArray(file) ? file[0] : file;
 
     if (!fileName || !fileName.endsWith(".md")) {
