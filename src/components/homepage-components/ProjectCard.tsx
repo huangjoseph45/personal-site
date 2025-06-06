@@ -34,6 +34,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
   const [expandCard, setExpandCard] = useState<boolean>(false);
   const bottomRef = useRef<HTMLButtonElement>(null);
   const windowWidth = useWindowWidth();
+
   useEffect(() => {
     fetchMarkdown(`${folder}/content.md`).then((data) => setCardData(data));
   }, []);
@@ -131,6 +132,15 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
         ) : (
           <p className="mt-4 w-2/3 h-[3rem] bg-secondary/25 rounded-md"></p>
         )}
+        <ul className="gap-2 my-4 w-fit flex flex-row flex-wrap">
+          {cardData?.data.tags.map((tag) => {
+            return (
+              <li className="capitalize text-sm px-2 py-1 rounded-lg bg-quarternary w-fit">
+                {tag}
+              </li>
+            );
+          })}
+        </ul>
 
         {/* Expanded Content */}
         <AnimatePresence>
@@ -172,7 +182,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
               }, 500);
           }}
         >
-          <p className="">{expandCard ? "Collapse" : "Read More"}</p>
+          <p className="mb-0">{expandCard ? "Collapse" : "Read More"}</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -213,6 +223,9 @@ async function fetchMarkdown(fileName: string) {
     const data = await response.json();
     return data;
   } catch (error) {
+    console.log(
+      `${import.meta.env.VITE_API_URL}/api/getMarkdown?file=${fileName}`
+    );
     console.error("Fetch error:", error);
     throw error;
   }

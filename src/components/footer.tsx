@@ -7,7 +7,7 @@ const Footer: React.FC<{ contactFunc?: () => void }> = ({ contactFunc }) => {
       {/* Left Group */}
       <div className="w-fit flex flex-row gap-6 ">
         <Link
-          to={"https://github.com/huangjoseph45/personal-site"}
+          to={`${import.meta.env.VITE_GITHUB}/personal-site`}
           target="_blank"
           className="text-secondary hover:underline cursor-pointer hover:text-quarternary transition-all duration-300"
         >

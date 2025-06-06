@@ -26,7 +26,7 @@ const HomePage: React.FC = () => {
   const mdFiles = Object.keys(
     import.meta.glob("../content/**/content.md", {
       eager: true,
-      as: "raw",
+      query: "raw",
     })
   ) as Array<string>;
 
@@ -42,7 +42,7 @@ const HomePage: React.FC = () => {
           return (
             <ProjectCard
               folder={`src/content/project-${index + 1}`}
-              key={index}
+              key={file}
             />
           );
         })}

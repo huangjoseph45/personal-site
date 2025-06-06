@@ -25,7 +25,6 @@ export default async function handle(req, res) {
     // (adjust “content” to whatever directory you keep your .md files in)
     const markdownDir = path.join(process.cwd(), "");
     const fullPath = path.join(markdownDir, fileName);
-
     // Read the file from disk
     const raw = await fs.readFile(fullPath, "utf-8");
 

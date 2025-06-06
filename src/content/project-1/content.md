@@ -1,17 +1,15 @@
 ---
-title: Test Project 1
+title: Imagine Collective
 date: Jan. 2025 - Apr. 2025
-tags: [javascript, node, motion, react]
-blurb: Working on a project related to delivering teaching supplies to schools all over Europe
+tags: [javascript, node, express, react, tailwind]
+blurb: Completely custom e-commerce storefront built for a friend.
 link: https://imagine-collective.tech/
 ---
 
-# Procurement and learning brought together in one seamless platform
+# Building an eCommerce Platform from Scratch
 
-After working on the Telenor project for about 4 years, my journey as a consultant continues at Neddi, where I've been developing a solution for managing the supply chain of teaching materials. The people over at Neddi are a joy to work with, and we're collaborating really well to develop this product.
+I had the opportunity to support a friend’s vision by helping him launch his own clothing brand through a fully developed eCommerce website. This became my most ambitious project to date and a valuable chance to grow my development skills. I aimed to create a complete, production-ready platform that could be hosted and published to the web.
 
-The project involves internationalization, role management and processing orders through ERP systems. I've been contributing mostly though frontend code and UX discussions, as well as a bit of system design.
+The site included essential eCommerce features such as user authentication, allowing customers to securely register, log in, and manage their accounts. I built a product catalog with pagination to ensure smooth and responsive browsing, even with a growing inventory. A shopping cart and checkout system enabled users to manage their purchases and place orders through an intuitive interface. On the backend, I implemented order handling and basic data management to track user activity and maintain operational flow.
 
-The frontend codebase is a Remix app, so this is my first time really properly trying out Remix - and I've got to say that I enjoy it a lot. I think I might prefer the server/client divide in Remix over NextJS. It's a bit more straight forward. It's also my first time working with internationalization, which we do using i18next.
-
-Working with multiple user roles in regards to authorization has also been a new experience, but this too has been pretty straight forward so far. I think the most annoying part about working with an app that behaves very differently according to which roles the user has is just testing and tuning everything properly from a ux perspective - which can be hard.
+I also took full responsibility for hosting and deployment, configuring environments, securing API keys, and managing the infrastructure to keep the site live and accessible. Through this project, I gained valuable experience in full-stack development and significantly improved both my design and technical abilities.
