@@ -4,8 +4,12 @@ import runCors from "./cors.ts";
 import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handle(req, res) {
+export default async function handle(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
     await runCors(req, res);
     if (req.method !== "GET") {
