@@ -107,7 +107,7 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
                 <AnimatePresence>
                   {booleanSelectors.showGT ? (
                     <motion.img
-                      src="public/gt.png"
+                      src="/gt.png"
                       alt="gt"
                       className="absolute -translate-y-full h-32 left-0 -top-2"
                       initial={{ opacity: 0 }}
@@ -165,7 +165,7 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
       </div>
       <img
         className="md:block hidden aspect-square overflow-hidden object-cover flex-1 max-h-[30rem] min-w-[15rem] rounded-md"
-        src="src/assets/me.jpg"
+        src="/me.jpg"
       />
     </div>
   );
