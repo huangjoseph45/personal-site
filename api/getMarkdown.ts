@@ -1,8 +1,8 @@
 // pages/api/markdown.ts (or /src/pages/api/markdown.ts)
 // ----------------------------------------------------
 import runCors from "./runCors.js";
-import { promises as fs } from "fs";
-import path from "path";
+// import { promises as fs } from "fs";
+// import path from "path";
 import matter from "gray-matter";
 import type { Request, Response } from "express";
 
