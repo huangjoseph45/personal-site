@@ -126,8 +126,8 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
           </p>
           <p>
             Outside of school, I have worked on several projects related to full
-            stack development focusing primarily on&#20;
-            <span className="inline-flex flex-row items-baseline gap-1 text-cyan-400 font-medium">
+            stack development focusing primarily on{" "}
+            <span className="inline-block flex-row items-baseline gap-1 text-cyan-400 font-medium">
               React
             </span>
           </p>
