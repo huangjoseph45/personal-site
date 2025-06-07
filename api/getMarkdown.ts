@@ -15,18 +15,15 @@ export default async function handle(req: Request, res: Response) {
 
     // Expect a query param ?file=somefile.md
     const { file } = req.query;
-    console.log(req.query);
     const fileName = (Array.isArray(file) ? file[0] : file) as string;
 
     if (!fileName) {
       return res.status(400).json({ error: "Invalid or missing .md filename" });
     }
-
-    // Construct an absolute path to your markdown folder
-    // (adjust “content” to whatever directory you keep your .md files in)
     const markdownDir = path.join(process.cwd(), "");
     const fullPath = path.join(markdownDir, fileName);
-    // Read the file from disk
+
+    console.log(fullPath);
     const raw = await fs.readFile(fullPath, "utf-8");
 
     // Parse frontmatter + content
