@@ -20,17 +20,16 @@ export default async function handle(req: Request, res: Response) {
     if (!fileName) {
       return res.status(400).json({ error: "Invalid or missing .md filename" });
     }
-    const markdownDir = path.join(process.cwd(), "");
-    const fullPath = path.join(markdownDir, fileName);
+    const fullPath = path.join(process.cwd(), fileName);
 
     console.log(fullPath);
     const raw = await fs.readFile(fullPath, "utf-8");
-
     // Parse frontmatter + content
     const { data, content } = matter(raw);
 
     res.status(200).json({ data, content });
   } catch (err) {
+    console.error(err);
     if (err instanceof Error) {
       res.status(500).json({ error: err.message });
     } else {
