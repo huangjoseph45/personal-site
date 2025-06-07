@@ -30,6 +30,8 @@ const HomePage: React.FC = () => {
     })
   ) as Array<string>;
 
+  console.log(mdFiles);
+
   useEffect(() => {
     setContactRes(0);
   }, [showContact]);
