@@ -30,8 +30,6 @@ const HomePage: React.FC = () => {
     })
   ) as Array<string>;
 
-  console.log(mdFiles);
-
   useEffect(() => {
     setContactRes(0);
   }, [showContact]);
@@ -120,7 +118,6 @@ const sendEmail = async (contactInfo: ContactInfo): Promise<boolean> => {
       contactInfo,
       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     );
-    console.log(result.status);
     return Math.floor(result.status / 100) == 2; // result has status and text
   } catch (error: any) {
     console.error(error.text || error);

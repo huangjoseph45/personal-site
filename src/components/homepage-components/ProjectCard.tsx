@@ -226,9 +226,6 @@ async function fetchMarkdown(fileName: string) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(
-      `${import.meta.env.VITE_API_URL}/api/getMarkdown?file=${fileName}`
-    );
     console.error("Fetch error:", error);
     throw error;
   }
