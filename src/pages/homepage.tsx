@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
   const [contactRes, setContactRes] = useState<number>(0);
 
   const mdFiles = Object.keys(
-    import.meta.glob("../content/**/content.md", {
+    import.meta.glob("../../public/content/**/content.md", {
       eager: true,
       query: "raw",
     })
@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
         {mdFiles?.map((file, index) => {
           return (
             <ProjectCard
-              folder={`src/content/project-${index + 1}`}
+              folder={`public/content/project-${index + 1}`}
               key={file}
             />
           );
