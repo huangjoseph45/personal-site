@@ -1,15 +1,12 @@
 // pages/api/markdown.ts (or /src/pages/api/markdown.ts)
 // ----------------------------------------------------
-import runCors from "./cors.ts";
+import runCors from "./runCors.js";
 import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { Request, Response } from "express";
 
-export default async function handle(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handle(req: Request, res: Response) {
   try {
     await runCors(req, res);
     if (req.method !== "GET") {
@@ -19,9 +16,9 @@ export default async function handle(
     // Expect a query param ?file=somefile.md
     const { file } = req.query;
     console.log(req.query);
-    const fileName = Array.isArray(file) ? file[0] : file;
+    const fileName = (Array.isArray(file) ? file[0] : file) as string;
 
-    if (!fileName || !fileName.endsWith(".md")) {
+    if (!fileName) {
       return res.status(400).json({ error: "Invalid or missing .md filename" });
     }
 

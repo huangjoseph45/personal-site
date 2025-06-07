@@ -133,9 +133,12 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
           <p className="mt-4 w-2/3 h-[3rem] bg-secondary/25 rounded-md"></p>
         )}
         <ul className="gap-2 my-4 w-fit flex flex-row flex-wrap">
-          {cardData?.data.tags.map((tag) => {
+          {cardData?.data.tags.map((tag, index) => {
             return (
-              <li className="capitalize text-sm px-2 py-1 rounded-lg bg-quarternary w-fit">
+              <li
+                key={`${tag}-${index}`}
+                className="capitalize text-sm px-2 py-1 rounded-lg bg-quarternary w-fit"
+              >
                 {tag}
               </li>
             );

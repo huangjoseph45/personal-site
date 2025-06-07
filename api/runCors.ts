@@ -1,5 +1,5 @@
 import Cors from "cors";
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { Request, Response } from "express";
 
 // Initialize the cors middleware
 const cors = Cors({
@@ -8,7 +8,7 @@ const cors = Cors({
 });
 
 // Helper method to wait for middleware to execute before continuing
-function runCors(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+function runCors(req: Request, res: Response): Promise<void> {
   return new Promise((resolve, reject) => {
     cors(req, res, (result) => {
       if (result instanceof Error) {
