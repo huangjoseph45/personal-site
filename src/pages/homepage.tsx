@@ -41,12 +41,7 @@ const HomePage: React.FC = () => {
       <Intro showContact={() => setShowContact(!showContact)} />
       <ul className="w-full xl:p-12 md:p-8 p-4 flex flex-col gap-8">
         {mdFiles?.map((file, index) => {
-          return (
-            <ProjectCard
-              folder={`public/content/project-${index + 1}`}
-              key={file}
-            />
-          );
+          return <ProjectCard folder={`project-${index + 1}`} key={file} />;
         })}
       </ul>
       <Footer contactFunc={() => setShowContact(!showContact)} />
