@@ -73,10 +73,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
               muted
               playsInline
             >
-              <source
-                src={`public/content/${folder}/content.mp4`}
-                type="video/mp4"
-              />
+              <source src={`/content/${folder}/content.mp4`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </motion.div>
