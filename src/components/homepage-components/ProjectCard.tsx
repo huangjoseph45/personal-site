@@ -123,15 +123,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
         ) : (
           <small className="block w-[8rem] h-[1.25rem] rounded-md p-2 bg-secondary/25"></small>
         )}
-        {expandCard ? (
-          ""
-        ) : cardData?.data ? (
-          <p className="mt-4 2xl:text-2xl xl:text-xl lg:text-lg text-md">
-            {cardData?.data.blurb}
-          </p>
-        ) : (
-          <p className="mt-4 w-2/3 h-[3rem] bg-secondary/25 rounded-md"></p>
-        )}
+
         <ul className="gap-2 my-4 w-fit flex flex-row flex-wrap">
           {cardData?.data.tags.map((tag, index) => {
             return (
@@ -144,6 +136,16 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
             );
           })}
         </ul>
+
+        {expandCard ? (
+          ""
+        ) : cardData?.data ? (
+          <p className="mt-4 2xl:text-2xl xl:text-xl lg:text-lg text-md">
+            {cardData?.data.blurb}
+          </p>
+        ) : (
+          <p className="mt-4 w-2/3 h-[3rem] bg-secondary/25 rounded-md"></p>
+        )}
 
         {/* Expanded Content */}
         <AnimatePresence>
