@@ -32,11 +32,43 @@ const cardVariants = {
 const ProjectCard: React.FC<CardProps> = ({ folder }) => {
   const [cardData, setCardData] = useState<CardData | null>(null);
   const [expandCard, setExpandCard] = useState<boolean>(false);
+  const [fileType, setFileType] = useState<"video" | "image" | null>(null);
   const bottomRef = useRef<HTMLButtonElement>(null);
   const windowWidth = useWindowWidth();
 
   useEffect(() => {
     fetchMarkdown(`${folder}/content.md`).then((data) => setCardData(data));
+    const headOk = async (
+      url: string,
+      startsWith: string
+    ): Promise<boolean> => {
+      try {
+        const res = await fetch(url, { method: "HEAD", cache: "no-store" });
+        const ct = res.headers.get("content-type") || "";
+        return res.ok && ct.startsWith(startsWith);
+      } catch {
+        return false;
+      }
+    };
+
+    const checkFiles = async (): Promise<void> => {
+      if (await headOk(`/content/${folder}/content.mp4`, "video/")) {
+        setFileType("video");
+        return;
+      }
+
+      const exts = ["jpg", "jpeg", "png", "webp", "gif", "avif"];
+      for (const ext of exts) {
+        if (await headOk(`/content/${folder}/content.${ext}`, "image/")) {
+          setFileType("image");
+          return;
+        }
+      }
+
+      setFileType(null);
+    };
+
+    checkFiles();
   }, []);
 
   return (
@@ -66,16 +98,26 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
               duration: 0.5,
             }}
           >
-            <video
-              className="rounded-md h-full w-full object-cover object-top"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src={`/content/${folder}/content.mp4`} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            {fileType === "video" ? (
+              <video
+                className="rounded-md h-full w-full object-cover object-top"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source
+                  src={`/content/${folder}/content.mp4`}
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            ) : fileType === "image" ? (
+              <img
+                src={`/content/${folder}/content.png`}
+                className="rounded-md h-full object-cover object-to p-4 m-auto"
+              ></img>
+            ) : null}
           </motion.div>
         ) : (
           ""
