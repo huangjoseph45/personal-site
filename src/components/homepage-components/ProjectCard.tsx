@@ -3,7 +3,6 @@ import Button from "../button";
 import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import ReactMarkdown from "react-markdown";
-import useWindowWidth from "../useWindowWidth";
 
 type CardProps = {
   folder: `${string}`;
