@@ -34,7 +34,6 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
   const [expandCard, setExpandCard] = useState<boolean>(false);
   const [fileType, setFileType] = useState<"video" | "image" | null>(null);
   const bottomRef = useRef<HTMLButtonElement>(null);
-  const windowWidth = useWindowWidth();
 
   useEffect(() => {
     fetchMarkdown(`${folder}/content.md`).then((data) => setCardData(data));
