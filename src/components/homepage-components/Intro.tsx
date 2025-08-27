@@ -122,7 +122,7 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
               </motion.strong>
             </Link>
             . I'm taking concentrations in Cybersecurity and System Architecture
-            and plan to graduate in 2028 with my BS.
+            and plan to graduate in 2027 with my BS.
           </p>
           <p>
             Outside of school, I have worked on several projects related to full
