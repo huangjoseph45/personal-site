@@ -21,9 +21,9 @@ type CardData = {
 };
 
 const cardVariants = {
-  hidden: { scaleX: 0, opacity: 0 },
+  hidden: { scale: 0, opacity: 0 },
   visible: {
-    scaleX: 1,
+    scale: 1,
     opacity: 1,
     transition: { type: "spring", stiffness: 100, mass: 0.15, damping: 15 },
   },
@@ -77,30 +77,24 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className={`origin-top relative flex flex-col lg:flex-row gap-2 ${
-        expandCard ? "" : ""
-      } bg-bgsecondary rounded-md hover:ring-12 ring-tertiary/25 duration-300 transition-[ring]`}
+      className={`origin-top relative flex flex-col lg:flex-row gap-2 
+    transition-shadow duration-300 ease-in-out
+    ${expandCard ? "" : "hover:bg-bghover hover:shadow-lg shadow-hovershadow"} 
+    bg-bgsecondary rounded-md`}
     >
-      <AnimatePresence>
-        {!expandCard ? (
+      <AnimatePresence initial={false}>
+        {!expandCard && (
           <motion.div
-            className="origin-top-left aspect-video mx-auto my-auto lg:my-0 lg:mx-0"
-            initial={{ width: 0, height: 0, opacity: 0 }}
-            animate={{
-              maxHeight: "35vh",
-              height: "auto",
-              width: windowWidth > 1024 ? "auto" : "100%",
-              opacity: 1,
-            }}
-            exit={{ width: 0, height: 0, opacity: 0 }}
-            transition={{
-              ease: "easeInOut",
-              duration: 0.5,
-            }}
+            className="origin-left aspect-video mx-auto lg:mx-0 h-auto max-h-[30vh] w-auto"
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ ease: "easeInOut", duration: 0.3 }}
+            layout
           >
             {fileType === "video" ? (
               <video
-                className="rounded-md h-full w-full object-cover object-top"
+                className="origin-left rounded-md h-full w-full object-cover object-top"
                 autoPlay
                 loop
                 muted
@@ -115,12 +109,11 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
             ) : fileType === "image" ? (
               <img
                 src={`/content/${folder}/content.png`}
-                className="rounded-md h-full object-cover object-to p-4 m-auto"
-              ></img>
+                className="rounded-md flex-1 object-cover object-top p-4 m-auto"
+                alt=""
+              />
             ) : null}
           </motion.div>
-        ) : (
-          ""
         )}
       </AnimatePresence>
 

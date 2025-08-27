@@ -32,6 +32,8 @@
   --color-accent: hsl(172, 80%, 80%);
   --color-quarternary: #dc6c91;
   --color-gt: oklch(85.2% 0.199 91.936);
+  --color-bghover: #121838;
+  --color-hovershadow: #121838;
 }
 
 .light {
@@ -42,6 +44,8 @@
   --color-accent: hsl(172, 80%, 35%);
   --color-quarternary: #dc6c91;
   --color-gt: oklch(55.4% 0.135 66.442);
+  --color-bghover: #fffcf4;
+  --color-hovershadow: #ede7d8;
 }
 
 .shadow-tertiary {
