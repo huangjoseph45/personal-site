@@ -79,7 +79,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
       viewport={{ once: true }}
       className={`origin-top relative flex flex-col lg:flex-row gap-2 ${
         expandCard ? "" : ""
-      } bg-bgsecondary rounded-md`}
+      } bg-bgsecondary rounded-md hover:ring-12 ring-tertiary/25 duration-300 transition-all`}
     >
       <AnimatePresence>
         {!expandCard ? (
@@ -171,7 +171,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
             return (
               <li
                 key={`${tag}-${index}`}
-                className="capitalize text-sm px-2 py-1 rounded-lg bg-quarternary w-fit"
+                className="capitalize text-sm px-2 py-1 rounded-lg bg-quarternary w-fit text-white"
               >
                 {tag}
               </li>

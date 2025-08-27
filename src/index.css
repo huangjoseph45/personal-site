@@ -25,11 +25,11 @@
 }
 
 @theme {
-  --color-primary: hsl(227, 50%, 90%);
+  --color-primary: #f0f0f0;
   --color-secondary: hsl(227, 50%, 10%);
-  --color-bgsecondary: #ededfa;
-  --color-tertiary: hsl(292, 80%, 20%);
-  --color-accent: hsl(172, 80%, 20%);
+  --color-bgsecondary: #f0f0f0;
+  --color-tertiary: hsl(308, 55%, 58%);
+  --color-accent: hsl(172, 80%, 35%);
   --color-quarternary: #dc6c91;
   --color-gt: oklch(55.4% 0.135 66.442);
 }
@@ -48,11 +48,13 @@
   box-shadow: 0 4px 15px var(--color-tertiary);
 }
 .hover\:shadow-tertiary:hover {
-  box-shadow: 0 4px 40px var(--color-tertiary);
+  box-shadow: 0 4px 25px
+    color-mix(in srgb, var(--color-tertiary) 50%, transparent);
 }
 .shadow-accent {
   box-shadow: 0 4px 15px var(--color-accent);
 }
 .hover\:shadow-accent:hover {
-  box-shadow: 0 4px 40px var(--color-accent);
+  box-shadow: 0 4px 20px
+    color-mix(in srgb, var(--color-accent) 50%, transparent);
 }

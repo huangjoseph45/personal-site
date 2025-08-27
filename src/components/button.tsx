@@ -33,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
         fill ? "w-full" : "w-fit"
       } flex items-center justify-center gap-1 relative cursor-pointer font-medium border-2 px-3 p-2 rounded-sm transition-all duration-300 ${
         variant == "primary"
-          ? " border-tertiary text-tertiary hover:shadow-tertiary"
+          ? " border-tertiary text-tertiary  hover:shadow-tertiary"
           : variant == "secondary"
           ? "text-accent border-accent hover:shadow-accent "
           : variant == "tertiary"
