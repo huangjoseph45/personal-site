@@ -77,9 +77,13 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className={`origin-top relative flex flex-col lg:flex-row gap-2 
-    transition-shadow duration-300 ease-in-out
-    ${expandCard ? "" : "hover:bg-bghover hover:shadow-lg shadow-hovershadow"} 
+      className={`origin-top relative flex flex-col lg:flex-row gap-2
+    transition-[background-color,box-shadow] duration-300 ease-in-out
+    ${
+      expandCard
+        ? "shadow-lg"
+        : "hover:bg-bghover hover:shadow-lg shadow-hovershadow"
+    }
     bg-bgsecondary rounded-md`}
     >
       <AnimatePresence initial={false}>
