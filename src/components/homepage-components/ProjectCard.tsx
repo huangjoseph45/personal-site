@@ -21,9 +21,9 @@ type CardData = {
 };
 
 const cardVariants = {
-  hidden: { scale: 0, opacity: 0 },
+  hidden: { scaleX: 0, opacity: 0 },
   visible: {
-    scale: 1,
+    scaleX: 1,
     opacity: 1,
     transition: { type: "spring", stiffness: 100, mass: 0.15, damping: 15 },
   },
@@ -79,7 +79,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
       viewport={{ once: true }}
       className={`origin-top relative flex flex-col lg:flex-row gap-2 ${
         expandCard ? "" : ""
-      } bg-bgsecondary rounded-md hover:ring-12 ring-tertiary/25 duration-300 transition-all`}
+      } bg-bgsecondary rounded-md hover:ring-12 ring-tertiary/25 duration-300 transition-[ring]`}
     >
       <AnimatePresence>
         {!expandCard ? (
