@@ -3,7 +3,7 @@ title: Code for the Community
 date: May. 2025 - Aug. 2025
 tags: [javascript, react native, python, github]
 blurb: Expanding MECA’s reach by building storefront, donation, and notification features.
-link: https://imagine-collective.tech/
+link: https://www.linkedin.com/company/code-for-the-community/posts/?feedView=all
 ---
 
 The Middle East Children’s Alliance (MECA) Community App is being developed by the CFTC team to strengthen MECA’s ability to connect with its global network of supporters, donors, and activists. The app serves as a hub for engagement, offering access to events, stories, fundraising campaigns, and shopping opportunities—all designed to empower MECA’s community and expand the organization’s impact. Built over a structured 12-week development cycle, the project is divided into distinct phases to ensure timely delivery of core features.
