@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "../button";
 import { Link } from "react-router";
-import { AnimatePresence, easeInOut, motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import ReactMarkdown from "react-markdown";
 
 type CardProps = {
