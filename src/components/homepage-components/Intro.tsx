@@ -28,8 +28,9 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
         imgRef.current.style.height = contentRef.current.offsetHeight + "px";
       }
     }
-
-    syncHeight();
+    setTimeout(() => {
+      syncHeight();
+    }, 200);
     window.addEventListener("resize", syncHeight);
     return () => window.removeEventListener("resize", syncHeight);
   }, []);
