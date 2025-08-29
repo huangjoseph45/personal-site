@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
         showModal={showContact}
         name={"Contact Me"}
       >
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 mb-4">
           <InputBox
             setInput={(value) =>
               setContactInfo((prev) => ({ ...prev, name: value }))
@@ -108,14 +108,15 @@ const HomePage: React.FC = () => {
               <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
             </svg>
           </Button>
-          {contactRes == 1 ? (
-            <p className="text-quarternary">Sent Successfully!</p>
-          ) : contactRes == 2 ? (
-            <p className="text-quarternary">{error}</p>
-          ) : (
-            ""
-          )}
         </div>
+
+        {contactRes == 1 ? (
+          <p className="text-quarternary">Sent Successfully!</p>
+        ) : contactRes == 2 ? (
+          <p className="text-quarternary">{error}</p>
+        ) : (
+          ""
+        )}
       </Modal>
     </>
   );
