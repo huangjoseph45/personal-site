@@ -24,8 +24,8 @@ const cardVariants = {
   visible: {
     scale: 1,
     opacity: 1,
-    transition: { ease: "easeInOut", duration: 0.35 },
   },
+  transition: { ease: "easeInOut", duration: 0.35 },
 };
 
 const ProjectCard: React.FC<CardProps> = ({ folder }) => {
@@ -80,7 +80,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
     ${expandCard ? "" : "hover:bg-bghover shadow-lg "}
     bg-bgsecondary rounded-md`}
     >
-      <div className="shadow-sm w-full h-full absolute top-1 left-2 bg-bgtertiary -z-10 rounded-md"></div>
+      <div className="shadow-sm w-full h-full absolute -top-1 left-2 bg-bgtertiary -z-10 rounded-sm"></div>
 
       <AnimatePresence initial={false}>
         {!expandCard && (
