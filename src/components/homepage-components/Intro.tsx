@@ -19,14 +19,31 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
     showSocials: false,
   });
   const rootRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    function syncHeight() {
+      if (contentRef.current && imgRef.current) {
+        imgRef.current.style.height = contentRef.current.offsetHeight + "px";
+      }
+    }
+
+    syncHeight();
+    window.addEventListener("resize", syncHeight);
+    return () => window.removeEventListener("resize", syncHeight);
+  }, []);
 
   return (
     <div
-      className="mx-4 md:mx-12 mb-18 md:mt-12 lg:gap-16 md:gap-12 flex flex-col md:flex-row gap-12 relative"
+      className="mx-4 md:mx-12 mb-18 mt-6 lg:gap-16 md:gap-12 flex flex-col md:flex-row gap-12 relative items-stretch"
       ref={rootRef}
     >
       {/* Main Content */}
-      <div className="shadow-lg p-6 flex flex-col md:w-1/2 relative bg-primary">
+      <div
+        className="h-fit shadow-lg p-6 flex flex-col md:w-1/2 relative bg-primary"
+        ref={contentRef}
+      >
         <ThreeDDiv />
 
         {/* Intro Header */}
@@ -175,7 +192,8 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
       </div>
       {/* Large Image */}
       <img
-        className="hidden md:block w-1/2 aspect-square overflow-hidden object-cover flex-1 max-h-[30rem] min-w-[15rem] rounded-md shadow-md shadow-tertiary"
+        ref={imgRef}
+        className="hidden md:block w-1/2 overflow-hidden object-cover  min-w-[15rem] rounded-md shadow-md shadow-tertiary"
         src="/me.jpg"
       />
     </div>
