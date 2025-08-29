@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const ThemeToggle: React.FC = () => {
-  const [isLight, setIsLight] = useState(false);
+  const [isLight, setIsLight] = useState(true);
 
   useEffect(() => {
     document.documentElement.classList.toggle("light", isLight);
