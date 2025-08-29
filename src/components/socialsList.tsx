@@ -106,11 +106,11 @@ const SocialsList: React.FC<{
           )}
         </AnimatePresence>
       </div>
-      {/* {!isIntersecting ? (
+      {!isIntersecting ? (
         <div className=" p-1 rounded-md fixed bottom-4 right-4 z-10 flex flex-row">
-          <LinksList />
+          {/* <LinksList /> */}
         </div>
-      ) : null} */}
+      ) : null}
     </>
   );
 };

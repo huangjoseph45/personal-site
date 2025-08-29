@@ -3,6 +3,7 @@ import Button from "../button";
 import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import ReactMarkdown from "react-markdown";
+import ThreeDDiv from "../3DDiv";
 
 type CardProps = {
   folder: `${string}`;
@@ -75,12 +76,12 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className={`shadow-sm origin-top relative flex flex-col lg:flex-row gap-2
-    transition-[background-color,box-shadow] duration-300 ease-in-out
-    ${expandCard ? "" : "hover:bg-bghover shadow-lg "}
-    bg-bgsecondary rounded-md`}
+      className={`origin-top relative flex flex-col lg:flex-row 
+    transition-[background-color,box-shadow] duration-300 ease-in-out shadow-lg
+    ${expandCard ? "" : "hover:bg-bghover "}
+    bg-bgsecondary `}
     >
-      <div className="shadow-sm w-full h-full absolute -top-1 left-2 bg-bgtertiary -z-10 rounded-sm"></div>
+      <ThreeDDiv />
 
       <AnimatePresence initial={false}>
         {!expandCard && (
@@ -94,7 +95,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
           >
             {fileType === "video" ? (
               <video
-                className="origin-left rounded-md h-full w-full object-cover object-top"
+                className="origin-left  h-full w-full object-cover object-top"
                 autoPlay
                 loop
                 muted
@@ -109,7 +110,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
             ) : fileType === "image" ? (
               <img
                 src={`/content/${folder}/content.png`}
-                className="rounded-md flex-1 object-cover object-top p-4 m-auto"
+                className=" flex-1 object-cover object-top p-4 m-auto"
                 alt=""
               />
             ) : null}
@@ -127,7 +128,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
               {cardData?.data.title}
             </h1>
           ) : (
-            <h1 className="w-1/3 h-[1.5rem] bg-secondary/25 p-2 rounded-lg"></h1>
+            <h1 className="w-1/3 h-[1.5rem] bg-secondary/25 p-2 "></h1>
           )}
 
           <Link
@@ -159,7 +160,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
             {cardData?.data.date}
           </small>
         ) : (
-          <small className="block w-[8rem] h-[1.25rem] rounded-md p-2 bg-secondary/25"></small>
+          <small className="block w-[8rem] h-[1.25rem]  p-2 bg-secondary/25"></small>
         )}
 
         <ul className="gap-2 my-4 w-fit flex flex-row flex-wrap">
@@ -167,7 +168,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
             return (
               <li
                 key={`${tag}-${index}`}
-                className="capitalize text-sm px-2 py-1 rounded-lg bg-quarternary w-fit text-white"
+                className="capitalize text-sm px-2 py-1  bg-quarternary w-fit text-white"
               >
                 {tag}
               </li>
@@ -182,7 +183,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
             {cardData?.data.blurb}
           </p>
         ) : (
-          <p className="mt-4 w-2/3 h-[3rem] bg-secondary/25 rounded-md"></p>
+          <p className="mt-4 w-2/3 h-[3rem] bg-secondary/25 "></p>
         )}
 
         {/* Expanded Content */}
@@ -210,10 +211,9 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
           )}
         </AnimatePresence>
         <motion.button
-          className="mt-2 flex flex-row gap-1 text-quarternary cursor-pointer hover:bg-tertiary/15 w-fit rounded-md p-1"
+          className="mt-2 flex flex-row gap-1 text-quarternary cursor-pointer hover:bg-tertiary/15 w-fit  p-1"
           onClick={() => {
             setExpandCard(!expandCard);
-            if (!expandCard) console.log(bottomRef);
             setTimeout(() => {
               bottomRef.current?.scrollIntoView({
                 behavior: "smooth",

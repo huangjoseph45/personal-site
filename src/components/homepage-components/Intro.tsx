@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import AnimationWrapper from "../AnimationWrapper";
 import Button from "../button";
 import SocialsList from "../socialsList";
+import ThreeDDiv from "../3DDiv";
 
 export type BooleanSelectors = {
   hoveringName: boolean;
@@ -21,11 +22,13 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
 
   return (
     <div
-      className=" mx-12 mb-18 mt-12 lg:gap-16 md:gap-12 flex flex-col md:flex-row gap-12 relative"
+      className="mx-4 md:mx-12 mb-18 mt-12 lg:gap-16 md:gap-12 flex flex-col md:flex-row gap-12 relative"
       ref={rootRef}
     >
       {/* Main Content */}
-      <div className="flex flex-col md:w-1/2">
+      <div className="shadow-lg p-6 flex flex-col md:w-1/2 relative bg-primary">
+        <ThreeDDiv />
+
         {/* Intro Header */}
         <TextAnim text="Hi, my name is" />
         <AnimationWrapper>

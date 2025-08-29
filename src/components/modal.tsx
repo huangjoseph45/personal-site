@@ -1,6 +1,7 @@
 import React from "react";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import ThreeDDiv from "./3DDiv";
 
 const Modal: React.FC<{
   setShowModal: (value: boolean) => void;
@@ -28,9 +29,9 @@ const Modal: React.FC<{
             exit={{ opacity: 0 }}
             className="z-40 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-[25rem]   shadow-md "
           >
-            <div className="relative rounded-md bg-bgsecondary px-6 py-4">
+            <div className="relative bg-bgsecondary px-6 py-4">
               {/* Decoration */}
-              <div className="shadow-sm w-full h-full absolute -top-1 left-2 bg-bgtertiary -z-10 rounded-md" />
+              <ThreeDDiv />
 
               <div className="flex flex-row justify-between items-center h-fit mb-2 ">
                 <h1 className="my-auto">{name}</h1>

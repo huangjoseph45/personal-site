@@ -40,7 +40,9 @@ const HomePage: React.FC = () => {
     <div className="relative">
       <Header />
       <Intro showContact={() => setShowContact(!showContact)} />
-      <ul className="w-full xl:p-12 md:p-8 p-4 flex flex-col gap-8">
+
+      <h1 className="xl:px-12 md:px-8 px-4 mb-4">My Projects</h1>
+      <ul className="w-full xl:px-12 md:px-8 px-4 flex flex-col gap-8 mb-16">
         {mdFiles?.reverse().map((file, index) => {
           return (
             <ProjectCard
@@ -132,7 +134,6 @@ const sendEmail = async (
 ): Promise<boolean> => {
   try {
     if (contactCount > 3) {
-      console.log("HI");
       throw new Error("You have sent too many requests! Try again later!");
     }
     if (contactInfo.email.length === 0 || contactInfo.name.length === 0) {
