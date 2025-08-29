@@ -47,12 +47,12 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
 
   return (
     <div
-      className="mx-4 md:mx-12 mb-18 mt-6 lg:gap-16 md:gap-12 flex flex-col md:flex-row gap-12 relative items-stretch"
+      className="mx-4 md:mx-12 mb-18 mt-6 lg:gap-16 md:gap-12 flex flex-col md:flex-row gap-12 relative items-stretch "
       ref={rootRef}
     >
       {/* Main Content */}
       <div
-        className="h-fit shadow-lg p-6 flex flex-col md:w-1/2 relative bg-primary"
+        className="h-fit  p-6 flex flex-col md:w-1/2 relative bg-primary shadow-sm"
         ref={contentRef}
       >
         <ThreeDDiv />
