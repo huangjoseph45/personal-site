@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Link } from "react-router";
 import AnimationWrapper from "../AnimationWrapper";
@@ -22,17 +22,28 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  useEffect(() => {
-    function syncHeight() {
-      if (contentRef.current && imgRef.current) {
-        imgRef.current.style.height = contentRef.current.offsetHeight + "px";
-      }
-    }
-    syncHeight();
+  useLayoutEffect(() => {
+    const contentEl = contentRef.current;
+    const imgEl = imgRef.current;
+    if (!contentEl || !imgEl) return;
+
+    const syncHeight = () => {
+      const h = contentEl.offsetHeight;
+      if (h > 0) imgEl.style.height = `${h}px`;
+    };
+
+    const ro = new ResizeObserver(syncHeight);
+    ro.observe(contentEl);
 
     window.addEventListener("resize", syncHeight);
-    return () => window.removeEventListener("resize", syncHeight);
-  }, [contentRef?.current?.offsetHeight]);
+
+    syncHeight();
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", syncHeight);
+    };
+  }, []);
 
   return (
     <div

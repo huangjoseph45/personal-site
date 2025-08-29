@@ -25,19 +25,6 @@
 }
 
 @theme {
-  --color-primary: hsl(232, 50%, 10%);
-  --color-bgsecondary: #121838;
-  --color-bgtertiary: #222b5c;
-  --color-secondary: hsl(232, 50%, 90%);
-  --color-tertiary: hsl(292, 80%, 80%);
-  --color-accent: hsl(172, 80%, 80%);
-  --color-quarternary: #dc6c91;
-  --color-gt: oklch(85.2% 0.199 91.936);
-  --color-bghover: #121a4a;
-  --color-hovershadow: #121838;
-}
-
-.light {
   --color-primary: #f0f0f0;
   --color-secondary: hsl(227, 50%, 10%);
   --color-bgsecondary: #f0f0f0;
@@ -49,6 +36,19 @@
   --color-gt: oklch(55.4% 0.135 66.442);
   --color-bghover: #fffcf4;
   --color-hovershadow: #ede7d8;
+}
+
+.dark {
+  --color-primary: hsl(232, 50%, 10%);
+  --color-bgsecondary: #121838;
+  --color-bgtertiary: #222b5c;
+  --color-secondary: hsl(232, 50%, 90%);
+  --color-tertiary: hsl(292, 80%, 80%);
+  --color-accent: hsl(172, 80%, 80%);
+  --color-quarternary: #dc6c91;
+  --color-gt: oklch(85.2% 0.199 91.936);
+  --color-bghover: #121a4a;
+  --color-hovershadow: #121838;
 }
 
 .shadow-tertiary {
