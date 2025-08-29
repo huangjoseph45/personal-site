@@ -17,7 +17,7 @@ const Modal: React.FC<{
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ ease: "easeOut" }}
-            className="fixed w-screen h-screen top-0 left-0 backdrop-blur-xs bg-black/15"
+            className="fixed w-screen h-screen top-0 left-0 backdrop-blur-xs bg-black/15 z-30"
             onClick={() => setShowModal(false)}
           ></motion.div>
           {/* Decoration */}
@@ -26,7 +26,7 @@ const Modal: React.FC<{
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-[25rem]   shadow-md "
+            className="z-40 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-[25rem]   shadow-md "
           >
             <div className="relative rounded-md bg-bgsecondary px-6 py-4">
               {/* Decoration */}

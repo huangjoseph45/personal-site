@@ -10,7 +10,7 @@ const ThemeToggle: React.FC = () => {
   return (
     <button
       onClick={() => setIsLight(!isLight)}
-      className="bg-bgsecondary rounded-full border-none cursor-pointer w-12 h-12 flex items-center justify-center hover:ring-4 transition-all duration-300 ring-accent/25 z-50 shadow-md shadow-accent"
+      className="bg-bgsecondary rounded-full border-none cursor-pointer w-12 h-12 flex items-center justify-center hover:ring-4 transition-all duration-300 ring-accent/25 z-50 shadow-xs shadow-accent hover:bg-bgtertiary"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

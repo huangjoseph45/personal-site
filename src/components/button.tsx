@@ -27,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`${
         fill ? "w-full" : "w-fit"
-      }   relative cursor-pointer font-medium  px-3 p-2 rounded-sm transition-all duration-300 ${
+      }   relative cursor-pointer font-medium  px-3 p-2 rounded-sm transition-all duration-300 h-full ${
         variant == "primary"
           ? "text-tertiary  hover:shadow-tertiary"
           : variant == "secondary"
@@ -35,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
           : variant == "tertiary"
           ? "bg-quarternary text-white outline-quarternary/25 outline-6 -outline-offset-6 hover:outline-offset-0"
           : ""
-      }`}
+      } whitespace-nowrap`}
       style={{ fontSize: `${size}rem` }}
     >
       <motion.div

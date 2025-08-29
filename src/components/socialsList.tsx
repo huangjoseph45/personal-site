@@ -1,6 +1,9 @@
 import { motion } from "motion/react";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
+import { type BooleanSelectors } from "./homepage-components/Intro";
+import Button from "./button";
+import { AnimatePresence } from "motion/react";
 
 const containerVariants = {
   hidden: {
@@ -22,33 +25,102 @@ const childVariants = {
 
 const SocialsList: React.FC<{
   showSocials: () => void;
-}> = ({ showSocials }) => {
+  booleanSelectors: BooleanSelectors;
+  setBooleanSelectors: React.Dispatch<React.SetStateAction<BooleanSelectors>>;
+}> = ({ showSocials, booleanSelectors, setBooleanSelectors }) => {
+  const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
+  const objectRef = useRef<HTMLDivElement>(null);
+
+  const callback = (entries: IntersectionObserverEntry[]) => {
+    if (!objectRef.current) return;
+    entries.forEach((entry) => {
+      setIsIntersecting(entry.isIntersecting);
+    });
+  };
+
+  useEffect(() => {
+    const el = objectRef.current;
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      scrollMargin: "0px",
+      threshold: 0,
+    };
+
+    if (!el) {
+      return;
+    }
+
+    const obs = new IntersectionObserver(callback, options);
+
+    obs.observe(el);
+    return () => {
+      obs.unobserve(el);
+      obs.disconnect();
+    };
+  }, []);
+
   return (
-    <motion.div
-      className="origin-left h-full  rounded-full flex items-center justify-center bg-bgsecondary"
-      variants={containerVariants}
-      initial="hidden"
-      animate="show"
-      exit="hidden"
-    >
-      <motion.button
-        className="rounded-full hover:bg-secondary/15"
-        onClick={showSocials}
-        variants={childVariants}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="text-secondary stroke-current size-10 cursor-pointer  p-2 transition-all duration-300 rounded-md rotate-90"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-        >
-          <path d="m6 9 6 6 6-6"></path>
-        </svg>
-      </motion.button>
+    <>
+      <div ref={objectRef} className=" h-[3rem]">
+        <AnimatePresence>
+          {booleanSelectors.showSocials ? (
+            <motion.div
+              className="origin-left h-full  rounded-full flex items-center justify-center bg-bgsecondary shadow-sm px-2"
+              variants={containerVariants}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+            >
+              <motion.button
+                className="rounded-full hover:bg-secondary/15"
+                onClick={showSocials}
+                variants={childVariants}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="text-secondary stroke-current size-10 cursor-pointer  p-2 transition-all duration-300 rounded-md rotate-90"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                >
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </motion.button>
+              <LinksList />
+            </motion.div>
+          ) : (
+            <Button
+              variant="primary"
+              label="Socials"
+              onClick={() =>
+                setBooleanSelectors({
+                  ...booleanSelectors,
+                  showSocials: !booleanSelectors.showSocials,
+                })
+              }
+            />
+          )}
+        </AnimatePresence>
+      </div>
+      {/* {!isIntersecting ? (
+        <div className=" p-1 rounded-md fixed bottom-4 right-4 z-10 flex flex-row">
+          <LinksList />
+        </div>
+      ) : null} */}
+    </>
+  );
+};
+
+export default SocialsList;
+
+const LinksList: React.FC = () => {
+  return (
+    <>
+      {" "}
       <Link to={import.meta.env.VITE_LINKEDIN} target="_blank">
         <motion.div
           variants={childVariants}
@@ -85,7 +157,6 @@ const SocialsList: React.FC<{
         </motion.div>
       </Link>
       <Link to={import.meta.env.VITE_GITHUB} target="_blank">
-        {" "}
         <motion.div
           variants={childVariants}
           className="rounded-full hover:bg-quarternary/25"
@@ -121,7 +192,6 @@ const SocialsList: React.FC<{
         </motion.div>
       </Link>
       <Link to={import.meta.env.VITE_INSTA} target="_blank">
-        {" "}
         <motion.div
           variants={childVariants}
           className="rounded-full hover:bg-quarternary/25"
@@ -143,16 +213,14 @@ const SocialsList: React.FC<{
               fill="currentColor"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
               fill="currentColor"
             />
           </svg>
         </motion.div>
       </Link>
-    </motion.div>
+    </>
   );
 };
-
-export default SocialsList;

@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
     setContactRes(0);
   }, [showContact]);
   return (
-    <>
+    <div className="relative">
       <Header />
       <Intro showContact={() => setShowContact(!showContact)} />
       <ul className="w-full xl:p-12 md:p-8 p-4 flex flex-col gap-8">
@@ -118,7 +118,7 @@ const HomePage: React.FC = () => {
           ""
         )}
       </Modal>
-    </>
+    </div>
   );
 };
 

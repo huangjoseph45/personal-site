@@ -5,7 +5,7 @@ import AnimationWrapper from "../AnimationWrapper";
 import Button from "../button";
 import SocialsList from "../socialsList";
 
-type BooleanSelectors = {
+export type BooleanSelectors = {
   hoveringName: boolean;
   showGT: boolean;
   showSocials: boolean;
@@ -17,26 +17,64 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
     showGT: false,
     showSocials: false,
   });
+  const rootRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className=" mx-12 mb-18 mt-12 lg:gap-16 md:gap-12 gap-8">
-      <div className="">
-        <div className="flex flex-col md:flex-row gap-12">
-          <div className="flex flex-col md:w-1/2">
-            <TextAnim text="Hi, my name is" />
-            <AnimationWrapper>
-              <Link
-                to={import.meta.env.VITE_LINKEDIN}
-                target="_blank"
-                className="flex items-center w-fit"
-              >
-                <motion.div
-                  className="w-fit flex flex-col gap-0 cursor-pointer relative"
+    <div
+      className=" mx-12 mb-18 mt-12 lg:gap-16 md:gap-12 flex flex-col md:flex-row gap-12 relative"
+      ref={rootRef}
+    >
+      {/* Main Content */}
+      <div className="flex flex-col md:w-1/2">
+        {/* Intro Header */}
+        <TextAnim text="Hi, my name is" />
+        <AnimationWrapper>
+          <Link
+            to={import.meta.env.VITE_LINKEDIN}
+            target="_blank"
+            className="flex items-center w-fit"
+          >
+            <motion.div
+              className="w-fit flex flex-col gap-0 cursor-pointer relative"
+              onHoverStart={() =>
+                setBooleanSelectors({
+                  ...booleanSelectors,
+                  hoveringName: true,
+                })
+              }
+              onHoverEnd={() =>
+                setBooleanSelectors({
+                  ...booleanSelectors,
+                  hoveringName: false,
+                })
+              }
+            >
+              <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl text-quarternary">
+                Joseph Huang
+              </h1>
+              <AnimatePresence>
+                {booleanSelectors.hoveringName ? (
+                  <motion.hr
+                    className="absolute top-3/4 text-quarternary border-1 mt-2"
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    exit={{ width: 0 }}
+                  />
+                ) : null}
+              </AnimatePresence>
+            </motion.div>
+            <AnimatePresence mode="wait">
+              {booleanSelectors.hoveringName ? (
+                <motion.svg
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -5, opacity: 0 }}
+                  transition={{ delay: 0.25 }}
                   onHoverStart={() =>
-                    setBooleanSelectors({
-                      ...booleanSelectors,
+                    setBooleanSelectors((prev) => ({
+                      ...prev,
                       hoveringName: true,
-                    })
+                    }))
                   }
                   onHoverEnd={() =>
                     setBooleanSelectors({
@@ -44,142 +82,99 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
                       hoveringName: false,
                     })
                   }
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  className={` feather feather-chevron-down -rotate-90 text-quarternary`}
                 >
-                  <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl text-quarternary">
-                    Joseph Huang
-                  </h1>
-                  <AnimatePresence>
-                    {booleanSelectors.hoveringName ? (
-                      <motion.hr
-                        className="absolute top-3/4 text-quarternary border-1 mt-2"
-                        initial={{ width: 0 }}
-                        animate={{ width: "100%" }}
-                        exit={{ width: 0 }}
-                      />
-                    ) : null}
-                  </AnimatePresence>
-                </motion.div>
-                <AnimatePresence mode="wait">
-                  {booleanSelectors.hoveringName ? (
-                    <motion.svg
-                      initial={{ y: -20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: -5, opacity: 0 }}
-                      transition={{ delay: 0.25 }}
-                      onHoverStart={() =>
-                        setBooleanSelectors((prev) => ({
-                          ...prev,
-                          hoveringName: true,
-                        }))
-                      }
-                      onHoverEnd={() =>
-                        setBooleanSelectors({
-                          ...booleanSelectors,
-                          hoveringName: false,
-                        })
-                      }
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="48"
-                      height="48"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className={` feather feather-chevron-down -rotate-90 text-quarternary`}
-                    >
-                      <path d="m6 9 6 6 6-6"></path>
-                    </motion.svg>
-                  ) : null}
+                  <path d="m6 9 6 6 6-6"></path>
+                </motion.svg>
+              ) : null}
+            </AnimatePresence>
+          </Link>
+        </AnimationWrapper>
+
+        {/* Small Image Under Header */}
+        <img
+          className="md:hidden shadow-sm  overflow-hidden object-cover flex-1 max-h-[30rem] w-full rounded-md shadow-tertiary"
+          src="/me.jpg"
+        />
+        {/* About Me */}
+        <div className="relative mt-6 w-full xl:text-2xl lg:text-xl md:text-lg text-base gap-4 flex flex-col mb-6">
+          <p>
+            I'm a computer engineering student at{" "}
+            <Link target="_blank" to={"https://ece.gatech.edu/"}>
+              <motion.strong
+                className="text-gt cursor-pointer relative hover:underline"
+                onHoverStart={() =>
+                  setBooleanSelectors({ ...booleanSelectors, showGT: true })
+                }
+                onHoverEnd={() =>
+                  setBooleanSelectors({
+                    ...booleanSelectors,
+                    showGT: false,
+                  })
+                }
+              >
+                <AnimatePresence>
+                  {booleanSelectors.showGT ? (
+                    <motion.img
+                      src="/gt.png"
+                      alt="gt"
+                      className="absolute -translate-y-full h-32 left-0 -top-2"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    />
+                  ) : (
+                    ""
+                  )}
                 </AnimatePresence>
-              </Link>
-            </AnimationWrapper>
-            <img
-              className="md:hidden shadow-sm  overflow-hidden object-cover flex-1 max-h-[30rem] w-full rounded-md shadow-tertiary"
-              src="/me.jpg"
-            />
-            <div className="relative mt-6 w-full xl:text-2xl lg:text-xl md:text-lg text-base gap-4 flex flex-col mb-6">
-              <p>
-                I'm a computer engineering student at{" "}
-                <Link target="_blank" to={"https://ece.gatech.edu/"}>
-                  <motion.strong
-                    className="text-gt cursor-pointer relative hover:underline"
-                    onHoverStart={() =>
-                      setBooleanSelectors({ ...booleanSelectors, showGT: true })
-                    }
-                    onHoverEnd={() =>
-                      setBooleanSelectors({
-                        ...booleanSelectors,
-                        showGT: false,
-                      })
-                    }
-                  >
-                    <AnimatePresence>
-                      {booleanSelectors.showGT ? (
-                        <motion.img
-                          src="/gt.png"
-                          alt="gt"
-                          className="absolute -translate-y-full h-32 left-0 -top-2"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                        />
-                      ) : (
-                        ""
-                      )}
-                    </AnimatePresence>
-                    Georgia Tech
-                  </motion.strong>
-                </Link>
-                . I'm taking concentrations in Cybersecurity and System
-                Architecture and plan to graduate in 2027 with my BS.
-              </p>
-              <p>
-                Outside of school, I have worked on several projects related to
-                full stack development focusing primarily on{" "}
-                <span className="inline-block flex-row items-baseline gap-1 text-cyan-400 font-medium">
-                  React
-                </span>
-              </p>
-            </div>
-            <div className="flex flex-row gap-8 h-[3rem]">
-              <Button
-                variant="secondary"
-                label="Contact me"
-                onClick={showContact}
-              />
-              <AnimatePresence>
-                {booleanSelectors.showSocials ? (
-                  <SocialsList
-                    showSocials={() =>
-                      setBooleanSelectors({
-                        ...booleanSelectors,
-                        showSocials: !booleanSelectors.showSocials,
-                      })
-                    }
-                  />
-                ) : (
-                  <Button
-                    variant="primary"
-                    label="Socials"
-                    onClick={() =>
-                      setBooleanSelectors({
-                        ...booleanSelectors,
-                        showSocials: !booleanSelectors.showSocials,
-                      })
-                    }
-                  />
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
-          <img
-            className="hidden md:block w-1/2 aspect-square overflow-hidden object-cover flex-1 max-h-[30rem] min-w-[15rem] rounded-md shadow-md shadow-tertiary"
-            src="/me.jpg"
+                Georgia Tech
+              </motion.strong>
+            </Link>
+            . I'm taking concentrations in Cybersecurity and System Architecture
+            and plan to graduate in 2027 with my BS.
+          </p>
+          <p>
+            Outside of school, I have worked on several projects related to full
+            stack development focusing primarily on{" "}
+            <span className="inline-block flex-row items-baseline gap-1 text-cyan-400 font-medium">
+              React
+            </span>
+          </p>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-row gap-8 h-[3rem]">
+          <Button
+            variant="secondary"
+            label="Contact me"
+            onClick={showContact}
+          />
+          <SocialsList
+            showSocials={() =>
+              setBooleanSelectors({
+                ...booleanSelectors,
+                showSocials: !booleanSelectors.showSocials,
+              })
+            }
+            setBooleanSelectors={setBooleanSelectors}
+            booleanSelectors={booleanSelectors}
           />
         </div>
       </div>
+      {/* Large Image */}
+      <img
+        className="hidden md:block w-1/2 aspect-square overflow-hidden object-cover flex-1 max-h-[30rem] min-w-[15rem] rounded-md shadow-md shadow-tertiary"
+        src="/me.jpg"
+      />
     </div>
   );
 };
