@@ -43,28 +43,29 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
               <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl text-quarternary">
                 Joseph Huang
               </h1>
-              {booleanSelectors.hoveringName ? (
-                <motion.hr
-                  className="absolute top-3/4 text-quarternary border-1 mt-2"
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  exit={{ width: 0 }}
-                />
-              ) : (
-                ""
-              )}
+              <AnimatePresence>
+                {booleanSelectors.hoveringName ? (
+                  <motion.hr
+                    className="absolute top-3/4 text-quarternary border-1 mt-2"
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    exit={{ width: 0 }}
+                  />
+                ) : null}
+              </AnimatePresence>
             </motion.div>
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
               {booleanSelectors.hoveringName ? (
                 <motion.svg
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
+                  exit={{ y: -5, opacity: 0 }}
+                  transition={{ delay: 0.25 }}
                   onHoverStart={() =>
-                    setBooleanSelectors({
-                      ...booleanSelectors,
+                    setBooleanSelectors((prev) => ({
+                      ...prev,
                       hoveringName: true,
-                    })
+                    }))
                   }
                   onHoverEnd={() =>
                     setBooleanSelectors({
@@ -81,13 +82,11 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  className={`transition-all duration-500 feather feather-chevron-down -rotate-90 text-quarternary`}
+                  className={` feather feather-chevron-down -rotate-90 text-quarternary`}
                 >
                   <path d="m6 9 6 6 6-6"></path>
                 </motion.svg>
-              ) : (
-                ""
-              )}
+              ) : null}
             </AnimatePresence>
           </Link>
         </AnimationWrapper>

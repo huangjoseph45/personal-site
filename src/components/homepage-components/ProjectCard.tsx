@@ -32,7 +32,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
   const [cardData, setCardData] = useState<CardData | null>(null);
   const [expandCard, setExpandCard] = useState<boolean>(false);
   const [fileType, setFileType] = useState<"video" | "image" | null>(null);
-  const bottomRef = useRef<HTMLButtonElement>(null);
+  const bottomRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     fetchMarkdown(`${folder}/content.md`).then((data) => setCardData(data));
@@ -75,21 +75,19 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className={`origin-top relative flex flex-col lg:flex-row gap-2
+      className={`shadow-sm origin-top relative flex flex-col lg:flex-row gap-2
     transition-[background-color,box-shadow] duration-300 ease-in-out
-    ${
-      expandCard
-        ? "shadow-lg"
-        : "hover:bg-bghover hover:shadow-lg shadow-hovershadow"
-    }
+    ${expandCard ? "" : "hover:bg-bghover shadow-lg "}
     bg-bgsecondary rounded-md`}
     >
+      <div className="shadow-sm w-full h-full absolute top-1 left-2 bg-bgtertiary -z-10 rounded-md"></div>
+
       <AnimatePresence initial={false}>
         {!expandCard && (
           <motion.div
-            className="origin-left aspect-video mx-auto lg:mx-0 h-auto max-h-[30vh] w-auto"
+            className=" origin-left aspect-video mx-auto lg:mx-0 h-auto max-h-[25vh] sm:max-h-[30vh] md:max-h-[32vh] w-auto lg:h-full"
             initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            animate={{ scale: 1, opacity: 1, transition: { delay: 0.3 } }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
             layout
@@ -122,7 +120,10 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
       <motion.div className=" min-h-55 p-8 flex-1 md:min-w-[30rem] min-w-[20rem]">
         <div className="p-0 flex flex-row items-center justify-between ">
           {cardData?.data ? (
-            <h1 className="2xl:text-4xl xl:text-3xl text-xl font-extrabold  my-auto">
+            <h1
+              className="2xl:text-4xl xl:text-3xl text-xl font-extrabold  my-auto scroll-m-12"
+              ref={bottomRef}
+            >
               {cardData?.data.title}
             </h1>
           ) : (
@@ -194,10 +195,8 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
               animate={{ height: "auto" }}
               exit={{ height: "0" }}
               transition={{
-                type: "spring",
-                stiffness: "750",
-                damping: "45",
-                mass: "0.35",
+                ease: "easeInOut",
+                duration: 0.3,
               }}
               className="overflow-hidden"
             >
@@ -212,16 +211,15 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
         </AnimatePresence>
         <motion.button
           className="mt-2 flex flex-row gap-1 text-quarternary cursor-pointer hover:bg-tertiary/15 w-fit rounded-md p-1"
-          ref={bottomRef}
           onClick={() => {
             setExpandCard(!expandCard);
-            if (!expandCard)
-              setTimeout(() => {
-                bottomRef.current?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "end",
-                });
-              }, 500);
+            if (!expandCard) console.log(bottomRef);
+            setTimeout(() => {
+              bottomRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }, 400);
           }}
         >
           <p className="mb-0">{expandCard ? "Collapse" : "Read More"}</p>

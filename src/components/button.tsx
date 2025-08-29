@@ -31,19 +31,41 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`${
         fill ? "w-full" : "w-fit"
-      } flex items-center justify-center gap-1 relative cursor-pointer font-medium border-2 px-3 p-2 rounded-sm transition-all duration-300 ${
+      } box-content flex items-center justify-center gap-1 relative cursor-pointer font-medium  px-3 p-2 rounded-sm transition-all duration-300 z-10 ${
         variant == "primary"
-          ? " border-tertiary text-tertiary  hover:shadow-tertiary"
+          ? "text-tertiary  hover:shadow-tertiary"
           : variant == "secondary"
-          ? "text-accent border-accent hover:shadow-accent "
+          ? "text-accent hover:shadow-accent "
           : variant == "tertiary"
-          ? "bg-quarternary border-[var(--color-quarternary)] text-white outline-quarternary/25 outline-6 -outline-offset-6 hover:outline-offset-0"
+          ? "bg-quarternary text-white outline-quarternary/25 outline-6 -outline-offset-6 hover:outline-offset-0"
           : ""
       }`}
       style={{ fontSize: `${size}rem` }}
     >
       {children}
       {label}
+      <div
+        className={`-z-1 rounded-sm absolute border-2 w-full h-full ${
+          variant == "primary"
+            ? " border-tertiary text-tertiary  hover:shadow-tertiary"
+            : variant == "secondary"
+            ? "text-accent border-accent hover:shadow-accent "
+            : variant == "tertiary"
+            ? "bg-quarternary border-[var(--color-quarternary)] text-white outline-quarternary/25 outline-6 -outline-offset-6 hover:outline-offset-0"
+            : ""
+        }`}
+      ></div>
+      <div
+        className={`w-full h-full  absolute top-1 left-1 border-2 rounded-sm shadow-xs  ${
+          variant == "primary"
+            ? " border-tertiary text-tertiary  shadow-tertiary"
+            : variant == "secondary"
+            ? "text-accent border-accent shadow-accent "
+            : variant == "tertiary"
+            ? "hidden bg-quarternary border-[var(--color-quarternary)] text-white outline-quarternary/25 outline-6 -outline-offset-6 hover:outline-offset-0"
+            : ""
+        }`}
+      ></div>
     </motion.button>
   );
 };
