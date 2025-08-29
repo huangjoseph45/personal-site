@@ -39,21 +39,14 @@ const Button: React.FC<ButtonProps> = ({
       style={{ fontSize: `${size}rem` }}
     >
       <motion.div
-        className={`z-[1] flex items-center justify-center gap-1 ${
-          variant == "primary"
-            ? "translate-x-1 translate-y-1"
-            : variant == "secondary"
-            ? "translate-x-1 translate-y-1"
-            : variant == "tertiary"
-            ? ""
-            : ""
-        }`}
-        initial={{ opacity: 0 }}
+        className={`z-[1] flex items-center justify-center gap-1 `}
+        initial={{ opacity: 0, scale: 0.85 }}
         animate={{
           opacity: 1,
-          rotateY: variant == "primary" || variant == "secondary" ? 10 : 0,
+          scale: 1,
+          rotateY: variant == "primary" || variant == "secondary" ? -10 : 0,
         }}
-        transition={{ delay: 0.1, duration: 0.3 }}
+        transition={{ delay: 0.7, duration: 0.15 }}
       >
         {children}
         {label}
@@ -63,7 +56,7 @@ const Button: React.FC<ButtonProps> = ({
         initial={{ scale: 0.95, scaleX: 0 }}
         animate={{ scale: 1, scaleX: 1 }}
         exit={{ scale: 0.95, scaleX: 0 }}
-        transition={{ ease: "easeOut", duration: 0.25 }}
+        transition={{ ease: "easeOut", duration: 0.25, delay: 0.35 }}
         className={`origin-left top-0 left-0 rounded-sm absolute border-2 w-full h-full ${
           variant == "primary"
             ? " border-tertiary text-tertiary  hover:shadow-tertiary"
@@ -78,8 +71,8 @@ const Button: React.FC<ButtonProps> = ({
         initial={{ scale: 0.95, scaleX: 0 }}
         animate={{ scale: 1, scaleX: 1 }}
         exit={{ scale: 0.95, scaleX: 0 }}
-        transition={{ ease: "easeOut", duration: 0.25, delay: 0.35 }}
-        className={`origin-right w-full h-full  absolute top-1 left-1 border-2 rounded-sm shadow-xs  ${
+        transition={{ ease: "easeOut", duration: 0.25 }}
+        className={`origin-right w-full h-full  absolute -top-1 left-1 border-2 rounded-sm shadow-xs  ${
           variant == "primary"
             ? " border-tertiary text-tertiary  shadow-tertiary"
             : variant == "secondary"

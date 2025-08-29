@@ -36,6 +36,7 @@
   --color-gt: oklch(55.4% 0.135 66.442);
   --color-bghover: #fffcf4;
   --color-hovershadow: #ede7d8;
+  --color-bordersecondary: #f7f7f7;
 }
 
 .dark {
@@ -49,6 +50,7 @@
   --color-gt: oklch(85.2% 0.199 91.936);
   --color-bghover: #121a4a;
   --color-hovershadow: #121838;
+  --color-bordersecondary: #404a82;
 }
 
 .shadow-tertiary {
