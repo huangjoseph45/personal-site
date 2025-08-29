@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "../button";
 import { Link } from "react-router";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, easeInOut, motion } from "motion/react";
 import ReactMarkdown from "react-markdown";
 
 type CardProps = {
@@ -20,11 +20,11 @@ type CardData = {
 };
 
 const cardVariants = {
-  hidden: { scale: 0, opacity: 0 },
+  hidden: { scale: 0.85, opacity: 0 },
   visible: {
     scale: 1,
     opacity: 1,
-    transition: { type: "spring", stiffness: 100, mass: 0.15, damping: 15 },
+    transition: { ease: "easeInOut", duration: 0.35 },
   },
 };
 
