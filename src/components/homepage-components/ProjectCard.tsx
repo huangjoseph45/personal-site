@@ -210,36 +210,38 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
             ""
           )}
         </AnimatePresence>
-        <motion.button
-          className="mt-2 flex flex-row gap-1 text-quarternary cursor-pointer hover:bg-tertiary/15 w-fit  p-1"
-          onClick={() => {
-            setExpandCard(!expandCard);
-            setTimeout(() => {
-              bottomRef.current?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            }, 400);
-          }}
-        >
-          <p className="mb-0">{expandCard ? "Collapse" : "Read More"}</p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            className={`transition-all duration-500 feather feather-chevron-down ${
-              expandCard ? "-rotate-180" : ""
-            }`}
+        {cardData?.content ? (
+          <motion.button
+            className="mt-2 flex flex-row gap-1 text-quarternary cursor-pointer hover:bg-tertiary/15 w-fit  p-1"
+            onClick={() => {
+              setExpandCard(!expandCard);
+              setTimeout(() => {
+                bottomRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }, 400);
+            }}
           >
-            <path d="m6 9 6 6 6-6"></path>
-          </svg>
-        </motion.button>
+            <p className="mb-0">{expandCard ? "Collapse" : "Read More"}</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              className={`transition-all duration-500 feather feather-chevron-down ${
+                expandCard ? "-rotate-180" : ""
+              }`}
+            >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </motion.button>
+        ) : null}
       </motion.div>
     </motion.div>
   );
