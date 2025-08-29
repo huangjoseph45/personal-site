@@ -22,7 +22,7 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
 
   return (
     <div
-      className="mx-4 md:mx-12 mb-18 mt-12 lg:gap-16 md:gap-12 flex flex-col md:flex-row gap-12 relative"
+      className="mx-4 md:mx-12 mb-18 md:mt-12 lg:gap-16 md:gap-12 flex flex-col md:flex-row gap-12 relative"
       ref={rootRef}
     >
       {/* Main Content */}

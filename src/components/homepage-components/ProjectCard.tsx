@@ -79,14 +79,14 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
       className={`origin-top relative flex flex-col lg:flex-row 
     transition-[background-color,box-shadow] duration-300 ease-in-out shadow-lg
     ${expandCard ? "" : "hover:bg-bghover "}
-    bg-bgsecondary `}
+    bg-bgsecondary`}
     >
       <ThreeDDiv />
 
       <AnimatePresence initial={false}>
         {!expandCard && (
           <motion.div
-            className=" origin-left aspect-video mx-auto lg:mx-0 h-auto max-h-[25vh] sm:max-h-[30vh] md:max-h-[32vh] w-auto lg:h-full"
+            className=" origin-left aspect-video mx-auto lg:mx-0 h-auto max-h-[25vh] sm:max-h-[30vh] md:max-h-[32vh] w-full md:w-auto lg:h-full mb-4 md:mb-0 "
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1, transition: { delay: 0.3 } }}
             exit={{ scale: 0.95, opacity: 0 }}
@@ -95,7 +95,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
           >
             {fileType === "video" ? (
               <video
-                className="origin-left  h-full w-full object-cover object-top"
+                className="origin-left  md:h-full w-full object-cover object-top"
                 autoPlay
                 loop
                 muted
