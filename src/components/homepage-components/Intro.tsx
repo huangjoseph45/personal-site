@@ -202,11 +202,17 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
         </div>
       </div>
       {/* Large Image */}
-      <img
+      <div
+        className="h-fit flex-col md:w-1/2 relative bg-primary shadow-sm hidden md:flex"
         ref={imgRef}
-        className="hidden md:block w-1/2 overflow-hidden object-cover  min-w-[15rem] rounded-md shadow-md shadow-tertiary"
-        src="/me.jpg"
-      />
+      >
+        <img
+          className="w-full object-cover  h-full  -rotate-y-0 shadow-tertiary"
+          src="/me.jpg "
+        />
+
+        {/* <ThreeDDiv /> */}
+      </div>
     </div>
   );
 };
