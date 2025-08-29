@@ -39,9 +39,20 @@ const Button: React.FC<ButtonProps> = ({
       style={{ fontSize: `${size}rem` }}
     >
       <motion.div
-        className="z-[1] flex items-center justify-center gap-1"
+        className={`z-[1] flex items-center justify-center gap-1 ${
+          variant == "primary"
+            ? "translate-x-1 translate-y-1"
+            : variant == "secondary"
+            ? "translate-x-1 translate-y-1"
+            : variant == "tertiary"
+            ? ""
+            : ""
+        }`}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{
+          opacity: 1,
+          rotateY: variant == "primary" || variant == "secondary" ? 10 : 0,
+        }}
         transition={{ delay: 0.1, duration: 0.3 }}
       >
         {children}
