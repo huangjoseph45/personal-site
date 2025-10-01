@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Loader from "./loader/Loader";
-import AppContext, { ContextProvider } from "./ContextProvider";
+import { ContextProvider } from "./ContextProvider";
 
 type ReadyState = Record<string, boolean>;
 
