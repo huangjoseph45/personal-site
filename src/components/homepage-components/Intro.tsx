@@ -5,6 +5,7 @@ import AnimationWrapper from "../AnimationWrapper";
 import Button from "../button";
 import SocialsList from "../socialsList";
 import ThreeDDiv from "../3DDiv";
+import PreloadedImage from "../PreloadedImage";
 
 export type BooleanSelectors = {
   hoveringName: boolean;
@@ -206,12 +207,7 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
         className="h-fit flex-col md:w-1/2 relative bg-primary shadow-md hidden md:flex"
         ref={imgRef}
       >
-        <img
-          className="w-full object-cover  h-full  -rotate-y-0 shadow-tertiary rounded-sm"
-          src="/me.jpg "
-        />
-
-        {/* <ThreeDDiv /> */}
+        <PreloadedImage imageSrc="/me.jpg" />
       </div>
     </div>
   );
