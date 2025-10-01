@@ -66,7 +66,7 @@ const SocialsList: React.FC<{
         <AnimatePresence>
           {booleanSelectors.showSocials ? (
             <motion.div
-              className="origin-left h-full  rounded-full flex items-center justify-center bg-bgsecondary shadow-sm px-2"
+              className="h-[3rem] origin-left  rounded-full inline-flex items-center justify-center bg-bgsecondary shadow-sm px-2"
               variants={containerVariants}
               initial="hidden"
               animate="show"
@@ -119,8 +119,7 @@ export default SocialsList;
 
 const LinksList: React.FC = () => {
   return (
-    <>
-      {" "}
+    <div className="flex flex-row">
       <Link to={import.meta.env.VITE_LINKEDIN} target="_blank">
         <motion.div
           variants={childVariants}
@@ -132,7 +131,6 @@ const LinksList: React.FC = () => {
             viewBox="0 0 20 20"
             version="1.1"
           >
-            <defs></defs>
             <g
               id="Page-1"
               stroke="none"
@@ -221,6 +219,22 @@ const LinksList: React.FC = () => {
           </svg>
         </motion.div>
       </Link>
-    </>
+      {/* <Link to={import.meta.env.VITE_DEVPOST} target="_blank">
+        <motion.div
+          variants={childVariants}
+          className="rounded-full hover:bg-quarternary/25"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#000000"
+            viewBox="0 0 24 24"
+            role="img"
+            className="text-secondary stroke-current size-10 cursor-pointer  p-2 transition-all duration-300 rounded-md "
+          >
+            <path d="M6.002 1.61 0 12.004 6.002 22.39h11.996L24 12.004 17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31 0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861.009-2.569-1.096-3.853-3.767-3.853z" />
+          </svg>
+        </motion.div>
+      </Link> */}
+    </div>
   );
 };
