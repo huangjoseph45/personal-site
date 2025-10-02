@@ -23,7 +23,7 @@ const Header: React.FC<{
   ];
   return (
     <div className="items-center flex flex-row justify-between">
-      <ul className="z-51 w-[90%] justify-between sm:w-fit fixed bottom-4 left-1/2 -translate-x-1/2 sm:left-4 md:left-12 sm:translate-x-0 sm:top-4 flex flex-row h-[3rem] rounded-full shadow-md bg-bgsecondary gap-1 p-1">
+      <ul className="z-51 w-[90%] justify-between sm:w-fit fixed -bottom-2 left-1/2 -translate-x-1/2 sm:left-4 md:left-12 sm:translate-x-0 sm:top-4 flex flex-row h-[3rem] rounded-full shadow-md bg-bgsecondary gap-1 p-1">
         {buttons.map((button) => {
           return (
             <Link
