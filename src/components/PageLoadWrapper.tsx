@@ -48,7 +48,10 @@ const PageLoadWrapper: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   useEffect(() => {
-    if (isReady && Object.values(isReady).every((value) => value)) {
+    if (
+      isAllReady ||
+      (isReady && Object.values(isReady).every((value) => value))
+    ) {
       setIsAllReady(true);
     } else {
       setIsAllReady(false);
