@@ -160,7 +160,7 @@ const PROJECTS = [
         className="underline underline-offset-4"
         href="https://imagine-collective.tech/"
       >
-        imagine-collective.tech
+        Link
       </a>
     ),
     bullets: [
