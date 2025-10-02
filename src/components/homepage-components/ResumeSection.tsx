@@ -19,20 +19,16 @@ export default function ResumeSection({ resumeUrl }: { resumeUrl?: string }) {
           {/* Left: Icon */}
           <div className="md:flex hidden w-1/8 h-full md:col-span-2  md:justify-center mr-8">
             <span className="inline-flex items-center justify-center bg-bgPrimary text-secondary">
-              <img
-                src="public/resume.png"
-                className="w-full"
-                aria-hidden="true"
-              />
+              <img src="/resume.png" className="w-full" aria-hidden="true" />
               <span className="sr-only">Resume</span>
             </span>
           </div>
           {/* Middle: Copy */}
-          <div className="md:col-span-7 max-w-[40rem]">
-            <h2 className="text-center sm:text-left text-4xl sm:text-3xl md:text-2xl font-semibold tracking-tight text-quarternary">
-              Explore my experience
+          <div className="md:col-span-7 max-w-[40rem] px-2">
+            <h2 className="text-center sm:text-left text-4xl font-semibold tracking-tight text-quarternary">
+              Explore my experiences
             </h2>
-            <p className="md:block hidden mt-2 max-w-prose text-secondary">
+            <p className="md:block hidden mt-2 max-w-prose text-secondary text-base">
               I’ve summarized my projects, skills, and impact in a concise
               resume. Take a look, and feel free to reach out if you’d like more
               details.
