@@ -40,6 +40,8 @@ function App() {
           setContactCount={setContactCount}
           setContactRes={setContactRes}
           contactRes={contactRes}
+          error={error}
+          setError={setError}
         >
           <Routes>
             <Route

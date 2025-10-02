@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ProjectCard from "../components/homepage-components/ProjectCard";
 import Intro from "../components/homepage-components/Intro";
 
