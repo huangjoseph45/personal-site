@@ -4,8 +4,8 @@ import HomePage from "./pages/homepage";
 import ResumePage from "./pages/resumepage";
 import PageLoadWrapper from "./components/PageLoadWrapper";
 import Layout from "./components/layout";
+import ErrorPage from "./pages/errorpage";
 
-// If ContactInfo isn't declared elsewhere, define it here or import it
 type ContactInfo = {
   name: string;
   email: string;
@@ -54,6 +54,7 @@ function App() {
               }
             />
             <Route path="/resume" element={<ResumePage />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Layout>
       </PageLoadWrapper>
