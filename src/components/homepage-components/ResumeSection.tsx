@@ -17,10 +17,10 @@ export default function ResumeSection({ resumeUrl }: { resumeUrl?: string }) {
         >
           <ThreeDDiv />
           {/* Left: Icon */}
-          <div className="md:flex hidden w-1/8 h-full md:col-span-2  md:justify-center">
+          <div className="md:flex hidden w-1/8 h-full md:col-span-2  md:justify-center mr-8">
             <span className="inline-flex items-center justify-center bg-bgPrimary text-secondary">
               <img
-                src="src/assets/resume.png"
+                src="public/resume.png"
                 className="w-full"
                 aria-hidden="true"
               />
