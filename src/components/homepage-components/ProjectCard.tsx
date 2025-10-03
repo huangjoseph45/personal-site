@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Button from "../button";
 import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
-import ReactMarkdown from "react-markdown";
 import ThreeDDiv from "../3DDiv";
+import MarkdownViewer from "../MarkdownViewer";
 
 type CardProps = {
   folder: `${string}`;
@@ -33,6 +33,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
   const [cardData, setCardData] = useState<CardData | null>(null);
   const [expandCard, setExpandCard] = useState<boolean>(false);
   const [fileType, setFileType] = useState<"video" | "image" | null>(null);
+  const [aspectRatio, setAspectRatio] = useState(16 / 9);
   const bottomRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -53,6 +54,14 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
     const checkFiles = async (): Promise<void> => {
       if (await headOk(`/content/${folder}/content.mp4`, "video/")) {
         setFileType("video");
+        setAspectRatio(0);
+
+        return;
+      }
+
+      if (await headOk(`/content/${folder}/content-vert.mp4`, "video/")) {
+        setFileType("video");
+        setAspectRatio(1);
         return;
       }
 
@@ -86,7 +95,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
       <AnimatePresence initial={false}>
         {!expandCard && (
           <motion.div
-            className=" origin-left aspect-video mx-auto lg:mx-0 h-auto max-h-[25vh] sm:max-h-[30vh] md:max-h-[32vh] w-full md:w-auto lg:h-full mb-4 md:mb-0 "
+            className="bg-bgtertiary origin-left mx-auto lg:mx-0 h-auto w-full md:w-auto md:h-fit mb-4 md:mb-0 flex justify-center items-center"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1, transition: { delay: 0.3 } }}
             exit={{ scale: 0.95, opacity: 0 }}
@@ -95,14 +104,26 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
           >
             {fileType === "video" ? (
               <video
-                className="origin-left  md:h-full w-full object-cover object-top"
+                className={`${
+                  aspectRatio == 0
+                    ? "aspect-[16/9] w-full max-w-[30rem]"
+                    : aspectRatio == 1
+                    ? "aspect-[9/16] h-full max-h-[30rem]"
+                    : ""
+                } h-full origin-left   object-cover object-top`}
                 autoPlay
                 loop
                 muted
                 playsInline
               >
                 <source
-                  src={`/content/${folder}/content.mp4`}
+                  src={`/content/${folder}/${
+                    aspectRatio == 0
+                      ? "content.mp4"
+                      : aspectRatio == 1
+                      ? "content-vert.mp4"
+                      : ""
+                  }`}
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
@@ -118,7 +139,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
         )}
       </AnimatePresence>
 
-      <motion.div className=" min-h-55 p-8 flex-1 md:min-w-[30rem] min-w-[20rem]">
+      <motion.div className="min-h-55 p-8 flex-1 md:min-w-[30rem] min-w-[20rem]">
         <div className="p-0 flex flex-row items-center justify-between ">
           {cardData?.data ? (
             <h1
@@ -164,7 +185,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
         )}
 
         <ul className="gap-2 my-4 w-fit flex flex-row flex-wrap">
-          {cardData?.data.tags.map((tag, index) => {
+          {cardData?.data?.tags?.map((tag, index) => {
             return (
               <li
                 key={`${tag}-${index}`}
@@ -179,7 +200,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
         {expandCard ? (
           ""
         ) : cardData?.data ? (
-          <p className="mt-4 2xl:text-2xl xl:text-xl lg:text-lg text-md">
+          <p className="mt-4 2xl:text-2xl xl:text-xl lg:text-lg text-md max-w-[45rem]">
             {cardData?.data.blurb}
           </p>
         ) : (
@@ -203,7 +224,8 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
             >
               <hr className="w-full my-9 border-secondary/35 border-1 " />
               <div className="2xl:text-2xl xl:text-xl lg:text-lg text-md mb-6">
-                <ReactMarkdown>{cardData?.content ?? ""}</ReactMarkdown>
+                <MarkdownViewer>{cardData?.content ?? ""}</MarkdownViewer>
+               
               </div>
             </motion.div>
           ) : (
@@ -251,6 +273,10 @@ export default ProjectCard;
 
 async function fetchMarkdown(fileName: string) {
   try {
+    console.log(
+      `${import.meta.env.VITE_API_URL}/api/getMarkdown?file=${fileName}`
+    );
+
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/getMarkdown?file=${fileName}`,
       {

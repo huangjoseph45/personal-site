@@ -24,10 +24,10 @@ const Header: React.FC<{
   return (
     <div className="items-center flex flex-row justify-between">
       <ul className="z-51 w-[90%] justify-between sm:w-fit fixed bottom-2 left-1/2 -translate-x-1/2 sm:left-4 md:left-12 sm:translate-x-0 sm:top-4 flex flex-row h-[3rem] rounded-full shadow-md bg-bgsecondary gap-1 p-1 border border-bgtertiary">
-        {buttons.map((button) => {
+        {buttons.map((button, index) => {
           return (
             <Link
-              key={button.link}
+              key={button.link + String(index)}
               to={button.link ? button.link : loc.pathname}
               onClick={button.clickFunc ? button.clickFunc : () => null}
               className="cursor-pointer hover:bg-bgtertiary rounded-full p-2"

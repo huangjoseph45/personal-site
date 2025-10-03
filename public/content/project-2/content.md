@@ -2,7 +2,7 @@
 title: Code for the Community
 date: May. 2025 - Aug. 2025
 tags: [javascript, react native, python, github]
-blurb: Expanding MECA’s reach by building storefront, donation, and notification features.
+blurb: The one-stop hub for staying engaged with MECA’s mission, the MECA For Peace App expands MECA’s reach with storefront, donation, and notification features. Supporters can shop Palestinian goods, contribute to fundraisers, and receive real time updates.
 link: https://www.linkedin.com/company/code-for-the-community/posts/?feedView=all
 ---
 

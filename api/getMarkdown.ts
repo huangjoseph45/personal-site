@@ -5,6 +5,8 @@ import runCors from "./runCors.js";
 // import path from "path";
 import matter from "gray-matter";
 import type { Request, Response } from "express";
+import path from "path";
+import { readFile } from "fs/promises";
 
 export default async function handle(req: Request, res: Response) {
   try {
@@ -21,20 +23,9 @@ export default async function handle(req: Request, res: Response) {
       return res.status(400).json({ error: "Invalid or missing .md filename" });
     }
 
-    const protocol = req.headers["x-forwarded-proto"] || "https";
-    const host = req.headers["x-forwarded-host"] || req.headers.host;
-    // e.g. /content/project-1/content.md
-    const filePath = `/content/${fileName}`;
-    const url = `${protocol}://${host}${filePath}`;
-    const mdRes = await fetch(url);
-    if (!mdRes.ok) {
-      return res
-        .status(mdRes.status)
-        .json({ error: `Fetch failed: ${mdRes.status}` });
-    }
-    const raw = await mdRes.text();
-
-    const { data, content } = matter(raw);
+    const filePath = path.join(process.cwd(), "public", "content", fileName);
+    const markdown = await readFile(filePath, "utf-8");
+    const { data, content } = matter(markdown);
 
     res.status(200).json({ data, content });
   } catch (err) {

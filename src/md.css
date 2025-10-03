@@ -1,0 +1,37 @@
+/* md.css */
+.markdown-body ul,
+.markdown-body ol {
+  /* undo resets */
+  list-style: revert;
+  list-style-position: outside;
+  margin: 0.5rem 0 0.5rem 1.5rem;
+  padding-left: 1.25rem;
+}
+
+.markdown-body ul {
+  list-style-type: disc;
+}
+.markdown-body ol {
+  list-style-type: decimal;
+}
+
+/* make sure items actually render as list-items */
+.markdown-body li {
+  display: list-item;
+  margin: 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.markdown-body p {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* optional: nicer nested bullets */
+.markdown-body ul ul {
+  list-style-type: circle;
+}
+.markdown-body ul ul ul {
+  list-style-type: square;
+}
