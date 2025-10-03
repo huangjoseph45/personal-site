@@ -2,7 +2,7 @@
 title: News Cap Fact Checker
 date: Feb. 2025
 tags: [react, fastAPI, twelveLabs, exa, cedarOS, docker, tailwindCSS, RapidAPI]
-blurb: An AI native video player and fact checking platform that empowers users to verify information directly from video content, cross referencing claims with credible sources in real time.
+blurb: An AI native fact checking platform that empowers users to verify information directly from video content.
 link: https://devpost.com/software/news-cap-a-fact-checker
 ---
 
