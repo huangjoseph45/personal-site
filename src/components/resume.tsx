@@ -67,7 +67,7 @@ const SKILLS: { label: string; items: string[] }[] = [
 const EXPERIENCE = [
   {
     leftTop: <b>Fullstack Developer Intern</b>,
-    rightTop: <span>May. 2025 – Aug. 2025</span>,
+    rightTop: <span>May 2025 – August 2025</span>,
     leftBottom: <span className="text-sm">Code for the Community</span>,
     rightBottom: <i className="text-sm">Remote</i>,
     bullets: [
@@ -78,17 +78,17 @@ const EXPERIENCE = [
   },
   {
     leftTop: <b>Software Engineer</b>,
-    rightTop: <span>Sep. 2024 – Nov. 2024</span>,
+    rightTop: <span>September 2024 – November 2024</span>,
     leftBottom: <span className="text-sm">Blueprint Fellowship</span>,
     rightBottom: <i className="text-sm">New Brunswick, NJ</i>,
     bullets: [
-      "Architected a secure authentication system with Flask JWT and role-based access control, achieving 100% test coverage.",
+      "Architected a secure authentication system with Flask JWT and role based access control with 100% test coverage.",
       "Developed optimized RESTful endpoints for user, product, and order services, improving query performance by 30%.",
     ],
   },
   {
     leftTop: <b>Software Engineer</b>,
-    rightTop: <span>Sep. 2024 – Present</span>,
+    rightTop: <span>September 2024 – Present</span>,
     leftBottom: (
       <span className="text-sm">
         Undergraduate Student Alliance of Computer Scientists
@@ -97,7 +97,8 @@ const EXPERIENCE = [
     rightBottom: <i className="text-sm">New Brunswick, NJ</i>,
     bullets: [
       "Completed 12+ workshops on DSA and software engineering, enhancing technical depth and problem solving skills.",
-      "Built and deployed an interactive drawing canvas app with React, strengthening knowledge in component driven architecture and state management.",
+      "Built and deployed an interactive drawing app with React to improve skills in state management & component architecture",
+      "Coordinated collaborative coding sessions to support members in learning new frameworks, encouraging peer-to-peer mentorship and strengthening group technical expertise.",
     ],
   },
 ];
@@ -105,7 +106,7 @@ const EXPERIENCE = [
 const PROJECTS = [
   {
     name: <b>News Cap - HackGT 12</b>,
-    right: <span>Sep. 2025</span>,
+    right: <span>September 2025 - September 2025</span>,
     bottom: (
       <div className="flex gap-2">
         <a
@@ -133,7 +134,7 @@ const PROJECTS = [
 
   {
     name: <b>News Cluster</b>,
-    right: <span>Sept. 2025 – Present</span>,
+    right: <span>September 2025 – Present</span>,
     bottom: (
       <a
         target="_blank"
@@ -153,7 +154,7 @@ const PROJECTS = [
 
   {
     name: <b>Imagine Collective </b>,
-    right: <span>Jan. 2025 – May. 2025 </span>,
+    right: <span>January 2025 – May 2025 </span>,
     bottom: (
       <a
         target="_blank"
@@ -164,7 +165,7 @@ const PROJECTS = [
       </a>
     ),
     bullets: [
-      "Deployed full-stack e-commerce platform with 20 REST APIs for authentication, product browsing, and order management.",
+      "Deployed eCommerce platform with 20 REST APIs for authentication, product browsing, and order management.",
       "Integrated Stripe for secure checkout and webhook-based real-time order confirmation.",
       "Built responsive, animated UI with Tailwind & Framer Motion, achieving 95+ Lighthouse score.",
       "Integrated AWS S3 for scalable, high-availability product image storage and retrieval.",
