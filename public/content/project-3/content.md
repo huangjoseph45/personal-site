@@ -3,7 +3,7 @@ title: News Cap Fact Checker
 date: Oct. 2025
 tags: [react, fastAPI, twelveLabs, exa, cedarOS, docker, tailwindCSS, RapidAPI]
 blurb: An AI native fact checking platform that verifies information directly from video content.
-link: https://devpost.com/software/news-cap-a-fact-checker
+link: https://devpost.com/software/fact-checker-ga8kjp
 ---
 
 News Cap is a modern fact checking platform designed to help users navigate the flood of information on social media. By combining automated research tools, AI driven video analysis, and intuitive design, the app makes it possible to verify claims right where people consume content, within videos themselves.
