@@ -24,7 +24,7 @@ News Cap is an AI native video player that analyzes YouTube videos for factual c
 - Verification: Findings are compiled into concise results displayed next to the video in the frontend
 - Architecture: The system runs on a microservices design
   - Frontend (React 19 + Vite + TailwindCSS + Framer Motion): Provides a responsive and modern interface with routing for video analysis
-  - Backend (FastAPI + Python + Uvicorn): Handles fact checking workflows and API logic
+  - Backend (FastAPI + Python): Handles fact checking workflows and API logic
   - Docker Compose: Enables containerized deployment for both frontend and backend
 
 ## Challenges We Ran Into
