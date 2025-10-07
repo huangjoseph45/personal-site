@@ -106,9 +106,9 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
               <video
                 className={`${
                   aspectRatio == 0
-                    ? "aspect-[16/9] w-full max-w-[30rem]"
+                    ? "aspect-[16/9] w-full max-w-[35rem]"
                     : aspectRatio == 1
-                    ? "aspect-[9/16] h-full max-h-[30rem]"
+                    ? "aspect-[9/16] h-full max-h-[40rem]"
                     : ""
                 } h-full origin-left   object-cover object-top`}
                 autoPlay

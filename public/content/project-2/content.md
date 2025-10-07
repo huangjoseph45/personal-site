@@ -3,7 +3,7 @@ title: Code for the Community
 date: May. 2025 - Aug. 2025
 tags: [javascript, react native, python, github]
 blurb: The one-stop hub for staying engaged with MECA’s mission, the MECA For Peace App expands MECA’s reach with storefront, donation, and notification features. Supporters can shop Palestinian goods, contribute to fundraisers, and receive real time updates.
-link: https://www.linkedin.com/company/code-for-the-community/posts/?feedView=all
+link: https://apps.apple.com/us/app/meca-for-peace/id6751219765
 ---
 
 The Middle East Children’s Alliance (MECA) - a nonprofit founded in 1988 that provides humanitarian aid, education, and cultural support for children and families in the Middle East - is partnering with the CFTC team on the MECA Community App to strengthen its ability to connect with its global network of supporters, donors, and activists. The app serves as a hub for engagement, offering access to events, stories, fundraising campaigns, and shopping opportunities. Built over a structured 12-week development cycle, the project is divided into distinct phases to ensure timely delivery of core features.
