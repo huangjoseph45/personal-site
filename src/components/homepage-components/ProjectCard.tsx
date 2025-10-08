@@ -33,7 +33,7 @@ const ProjectCard: React.FC<CardProps> = ({ folder }) => {
   const [cardData, setCardData] = useState<CardData | null>(null);
   const [expandCard, setExpandCard] = useState<boolean>(false);
   const [fileType, setFileType] = useState<"video" | "image" | null>(null);
-  const [aspectRatio, setAspectRatio] = useState(16 / 9);
+  const [aspectRatio, setAspectRatio] = useState(0);
   const bottomRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
