@@ -176,10 +176,10 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
           </p>
           <p>
             Outside of school, I have worked on several projects related to full
-            stack development focusing primarily on{" "}
+            stack development, with an emphasis on {" "}
             <span className="inline-block flex-row items-baseline gap-1 text-cyan-400 font-medium">
               React
-            </span>
+            </span>, Node.js, and Go.
           </p>
         </div>
 
