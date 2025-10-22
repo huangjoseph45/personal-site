@@ -6,6 +6,7 @@ import Button from "../button";
 import SocialsList from "../socialsList";
 import ThreeDDiv from "../3DDiv";
 import PreloadedImage from "../PreloadedImage";
+import PersonalImage from "./PersonalImage";
 
 export type BooleanSelectors = {
   hoveringName: boolean;
@@ -176,10 +177,11 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
           </p>
           <p>
             Outside of school, I have worked on several projects related to full
-            stack development, with an emphasis on {" "}
+            stack development, with an emphasis on{" "}
             <span className="inline-block flex-row items-baseline gap-1 text-cyan-400 font-medium">
               React
-            </span>, Node.js, and Go.
+            </span>
+            , Node.js, and Go.
           </p>
         </div>
 
@@ -203,12 +205,7 @@ const Intro: React.FC<{ showContact?: () => void }> = ({ showContact }) => {
         </div>
       </div>
       {/* Large Image */}
-      <div
-        className="h-fit flex-col md:w-1/2 relative bg-primary shadow-md hidden md:flex"
-        ref={imgRef}
-      >
-        <PreloadedImage imageSrc="/me.jpg" />
-      </div>
+      <PersonalImage ref={imgRef} />
     </div>
   );
 };
