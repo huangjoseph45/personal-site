@@ -3,7 +3,7 @@ title: Eye-Tracking Productivity Monitor
 date: 2026
 tags: [python, OpenCV, MediaPipe, computer-vision, real-time, threading]
 blurb: A real-time productivity monitor that uses eye tracking to detect distraction and play an alert when the user looks away for too long.
-link:
+link: https://github.com/huangjoseph45/Procrastination-Detection
 ---
 
 Eye-Tracking Productivity Monitor is a real-time computer vision application designed to help users stay focused while studying or working. By using a laptop webcam, eye tracking, and attention classification logic, the system detects when a user is repeatedly looking away from the screen or looking down at a phone, then responds with an audible alert.
