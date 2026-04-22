@@ -18,14 +18,19 @@ Eye-Tracking Productivity Monitor uses a laptop camera to track the user’s fac
 
 ## How I Built It
 
-![Eye-Tracking Productivity Monitor demo](/content/project-4/content.png)
-
 - Video Capture: The system continuously reads live frames from the user’s webcam using OpenCV
 - Face and Eye Tracking: MediaPipe Face Mesh is used to detect facial landmarks, including detailed eye and iris points
 - Gaze Estimation: The program computes horizontal and vertical eye ratios to estimate whether the user is focused, looking left, looking right, or looking down
 - Attention Classification: A distraction classifier uses threshold logic, hysteresis, and smoothing to reduce false positives from natural head and eye movement
 - Alert System: If distraction lasts beyond a defined threshold, the program triggers a platform-aware audio alert
 - User Feedback: The interface overlays real-time status, distraction duration, and debug information directly on the video stream
+<div style="text-align: center;">
+  <img
+    src="/content/project-4/content.png"
+    alt="Eye-Tracking Productivity Monitor demo"
+    width="500"
+  />
+</div>
 
 ## Challenges I Ran Into
 
