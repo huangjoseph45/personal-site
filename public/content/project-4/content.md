@@ -33,17 +33,9 @@ Eye-Tracking Productivity Monitor uses a laptop camera to track the user’s fac
 - Reducing false alarms required careful tuning of thresholds, smoothing factors, recovery timing, and face-loss handling
 - Making the alert responsive without becoming too aggressive required balancing timing and cooldown behavior
 
-## Accomplishments I am Proud Of
-
-- Building a working real-time prototype that responds to live user behavior
-- Successfully integrating webcam input, facial landmark detection, gaze estimation, and audio alerts into one system
-- Designing a distraction detection pipeline that is practical enough to demonstrate an everyday use case
-- Creating a project that connects computer vision concepts with a real productivity problem
-
 ## What I Learned
 
 - How to use OpenCV and MediaPipe together for live facial landmark and eye tracking
-- How thresholding, hysteresis, and exponential smoothing can improve reliability in real-time detection systems
 - The importance of system tuning when working with noisy real-world input like camera data
 - How human-centered design affects technical decisions when building tools meant for everyday use
 
@@ -53,5 +45,3 @@ Eye-Tracking Productivity Monitor uses a laptop camera to track the user’s fac
 - Expanding the distraction model to recognize additional off-task behaviors
 - Adding data logging or analytics so users can review focus trends over time
 - Exploring more adaptive alerts and personalized calibration for different users
-
-Overall, this project was a valuable experience because it combined programming, debugging, system integration, and computer vision into one practical application. It strengthened my interest in intelligent software systems and showed how ECE concepts can be applied to real everyday challenges.
