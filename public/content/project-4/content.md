@@ -18,6 +18,8 @@ Eye-Tracking Productivity Monitor uses a laptop camera to track the user’s fac
 
 ## How I Built It
 
+![Eye-Tracking Productivity Monitor demo](content.png)
+
 - Video Capture: The system continuously reads live frames from the user’s webcam using OpenCV
 - Face and Eye Tracking: MediaPipe Face Mesh is used to detect facial landmarks, including detailed eye and iris points
 - Gaze Estimation: The program computes horizontal and vertical eye ratios to estimate whether the user is focused, looking left, looking right, or looking down
