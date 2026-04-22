@@ -24,13 +24,7 @@ Eye-Tracking Productivity Monitor uses a laptop camera to track the user’s fac
 - Attention Classification: A distraction classifier uses threshold logic, hysteresis, and smoothing to reduce false positives from natural head and eye movement
 - Alert System: If distraction lasts beyond a defined threshold, the program triggers a platform-aware audio alert
 - User Feedback: The interface overlays real-time status, distraction duration, and debug information directly on the video stream
-<div style="text-align: center;">
-  <img
-    src="/content/project-4/content.png"
-    alt="Eye-Tracking Productivity Monitor demo"
-    width="500"
-  />
-</div>
+  ![Eye-Tracking Productivity Monitor demo](/content/project-4/content.png)
 
 ## Challenges I Ran Into
 
