@@ -16,7 +16,7 @@ The idea for this project came from a common productivity problem: losing focus 
 
 Eye-Tracking Productivity Monitor uses a laptop camera to track the user’s face, eyes, and gaze direction in real time. By analyzing iris position and eye openness, the program estimates whether the user is focused on the screen, looking away to the left or right, looking down, or no longer visible to the camera. If distraction continues for long enough, the application plays a loud alert sound to help the user return attention to their work. It also displays live status text and timing information directly on the video feed.
 
-## How We Built It
+## How I Built It
 
 - Video Capture: The system continuously reads live frames from the user’s webcam using OpenCV
 - Face and Eye Tracking: MediaPipe Face Mesh is used to detect facial landmarks, including detailed eye and iris points
@@ -25,21 +25,21 @@ Eye-Tracking Productivity Monitor uses a laptop camera to track the user’s fac
 - Alert System: If distraction lasts beyond a defined threshold, the program triggers a platform-aware audio alert
 - User Feedback: The interface overlays real-time status, distraction duration, and debug information directly on the video stream
 
-## Challenges We Ran Into
+## Challenges I Ran Into
 
 - Eye tracking is highly sensitive to lighting conditions, webcam quality, head position, and small user movements
 - Defining distraction precisely was difficult, since looking away from a screen does not always mean someone is off task
 - Reducing false alarms required careful tuning of thresholds, smoothing factors, recovery timing, and face-loss handling
 - Making the alert responsive without becoming too aggressive required balancing timing and cooldown behavior
 
-## Accomplishments We Are Proud Of
+## Accomplishments I am Proud Of
 
 - Building a working real-time prototype that responds to live user behavior
 - Successfully integrating webcam input, facial landmark detection, gaze estimation, and audio alerts into one system
 - Designing a distraction detection pipeline that is practical enough to demonstrate an everyday use case
 - Creating a project that connects computer vision concepts with a real productivity problem
 
-## What We Learned
+## What I Learned
 
 - How to use OpenCV and MediaPipe together for live facial landmark and eye tracking
 - How thresholding, hysteresis, and exponential smoothing can improve reliability in real-time detection systems
