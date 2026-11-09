@@ -5,7 +5,6 @@ import AnimationWrapper from "../AnimationWrapper";
 import Button from "../button";
 import SocialsList from "../socialsList";
 import ThreeDDiv from "../3DDiv";
-import PreloadedImage from "../PreloadedImage";
 import PersonalImage from "./PersonalImage";
 
 export type BooleanSelectors = {

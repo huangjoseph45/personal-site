@@ -427,7 +427,7 @@ function ResumeSubheading({
   rightTop: React.ReactNode;
   leftBottom: React.ReactNode;
   rightBottom: React.ReactNode;
-  bottom: React.ReactNode;
+  bottom?: React.ReactNode;
 }) {
   return (
     <div className="-mt-1 break-inside-avoid -mb-[4px]">
